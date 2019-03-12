@@ -266,6 +266,10 @@ An `awards` entry must also be published with the relevant information about the
 The framework is now set up, and call-offs may now be made.
 
 ### Making Direct Call-Offs (Contract)
+Full examples:
++ [009_first_direct_calloff.json](/single_publisher/009_first_direct_calloff.json)
++ [010_second_direct_calloff.json](/single_publisher/010_second_direct_calloff.json)
+
 A Direct Call-Off from a Framework agreement occurs when goods or services are procured directly from a supplier on an existing Framework agreement without any further tendering process. For example a Framework may be set up to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
 
 In OCDS a Direct Call-Off from a Framework agreement is represented by publishing a new `contract` block for each call-off under the *same OCID as the initial Framework Agreement*. Depending on how the `award` stage of the framework was published an extension may be required. This is because the contract block does not usually contain supplier information. Usually the supplier of a contract is determined looking at the `awardID` referenced in the contract block, and using the supplier information in this award. Therefore two options are available to publishers:
