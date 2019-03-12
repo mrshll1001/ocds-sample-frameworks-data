@@ -320,8 +320,84 @@ The `contracts` array is then added to with the details of the contract, includi
   }
 ]
 ```
-### Running a Mini-Competition (relatedProcess)
 
+This is repeated for subsequent Direct Call-Offs.
+
+### Running a Mini-Competition (`relatedProcess`)
+Full Example:
++ [011_mini-competition_tender.json](/single_publisher/011_mini-competition_tender.json)
+
+
+Another form of calling off from a Framework Agreement is the *Mini Competition*. In this form of purchas from the framework, a separate tendering process is run with participants limited to those already accepted as suppliers.
+
+Representing a Mini-Competition in OCDS is straightforward. Broadly:
++ A *new contracting process* with a *new OCID* is created to represent the Mini Competition
++ In the new process the `relatedProcesses` array contains an entry referencing the OCID of the existing Framework Agreement
++ In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender
+
+Following the previous sample of the Glasgow City Framework Agreement; after making their Direct Call-Offs Glasgow City hold a Mini-Competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original Framework Agreement:
+
+```json
+{
+  "ocid": "ocds-r6ebe6-example_framework-competition-01",
+  "id": "ocds-r6ebe6-example_framework-competition-01-tender-2019-05-01T00:00:00Z",
+  "date": "2019-05-01T00:00:00Z",
+  "tag": [
+    "tender"
+  ],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
+  "parties": [
+    {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
+  ],
+  "relatedProcesses": [
+    {
+      "id": "ocds-r6ebe6-example_framework-parent",
+      "relationship": "framework",
+      "title": "An Example Framework",
+      "scheme": "ocid",
+      "identifer": "ocds-r6ebe6-example_framework",
+      "uri": "https://example.org/records/ocds-r6ebe6-example_framework"
+    }
+  ],
+  ...
+}
+```
+Since this is a `tender` release the `tender` block contains information about the tender opportunity. The `procurementMethod` is set to `selective` to indicate that this is not an open tender.
+
+```json
+"tender": {
+  "id": "ocds-r6ebe6-example_framework-tender",
+  "title": "An Example Mini Competition",
+  "description": "A mini competition run off of the original framework",
+  "status": "active",
+  "procurementMethod": "selective",
+  "procuringEntity": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
+  "value": {
+    "amount": "2000",
+    "currency": "GBP"
+  }
+  ...
+}
+```
+From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
 ## Framework Agreement across Multiple Publishers
 There is very little difference in the OCDS representing a framework agreement handled by a single publisher, and a framework agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
 
