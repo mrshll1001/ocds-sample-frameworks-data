@@ -398,11 +398,196 @@ Since this is a `tender` release the `tender` block contains information about t
 }
 ```
 From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
+
 ## Framework Agreement across Multiple Publishers
 There is very little difference in the OCDS representing a framework agreement handled by a single publisher, and a framework agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
 
-### Publisher 1 sets up the Framework (Tender and Award)
+In the following samples, the Framework Agreement is published by *Crown Commercial Services* using their registered prefix of `ocds-b5fd17`. The purchases from the framework are made by entities published by *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
+### Publisher 1 sets up the Framework (Tender and Award)
+Full Examples:
++ [012_two_publishers_framework_setup.json](/multi_publisher/012_two_publishers_framework_setup.json)
++ [013_two_publishers_framework_bids_added.json](/multi_publisher/013_two_publishers_framework_bids_added.json)
++ [014_two_publishers_framework_award.json](/multi_publisher/014_two_publishers_framework_award.json)
+
+The first stages of the Framework Agreement are very similar to that when it only concerns a single publisher. In this sample, Crown Commercial Services commissions a Framework Agreement. Since they will not be the ones calling off from this framework they do *not* have the role of `buyer` and are not referenced in the `buyer` field:
+
+```json
+{
+  "ocid": "ocds-b5fd17-second_example_framework",
+  "id": "ocds-b5fd17-second_example_framework-tender-2019-03-01T00:00:00Z",
+  "date": "2019-03-01T00:00:00Z",
+  "tag": ["tender"],
+  "initiationType": "tender",
+  "parties": [
+    {
+    "name": "Crown Commercial Services",
+    "id": "GB-GOR-EA1015",
+    "identifer": {
+      "scheme": "GB-GOR",
+      "id": "EA1015"
+    },
+    "roles": [ "procuringEntity" ]
+    }
+  ]
+  ...
+}
+```
+They are the procuring entity of the framework, however, so they are referenced under `tender/procuringEntity`:
+
+```json
+"tender": {
+  "id": "ocds-b5fd17-second_example_framework-tender",
+  "title": "An Example National Framework",
+  "description": "An Example National Framework",
+  "status": "active",
+  "procuringEntity": {
+    "name": "Crown Commercial Services",
+    "id": "GB-LAS-GLG"
+  },
+  "value": {
+    "amount": "1000000",
+    "currency": "GBP"
+  }
+  ...
+}
+```
+Bidders are added to the framework as per the previous example. For brevity this has been condensed to a single release:
+```json
+{
+  "ocid": "ocds-b5fd17-second_example_framework",
+  "id": "ocds-b5fd17-second_example_framework-tenderUpdate-2019-03-31T00:00:00Z",
+  "date": "2019-03-31T00:00:00Z",
+  "tag": [
+    "tenderUpdate"
+  ],
+  "initiationType": "tender",
+  "parties": [
+    {
+      "name": "Crown Commercial Services",
+      "id": "GB-GOR-EA1015",
+      "identifer": {
+        "scheme": "GB-GOR",
+        "id": "EA1015"
+      },
+      "roles": [
+        "procuringEntity"
+      ]
+    },
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000001"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000002"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Supplier 3",
+      "id": "GB-COH-00000001-supplier_59",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000003"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Supplier 4",
+      "id": "GB-COH-00000001-supplier_60",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000004"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    }
+  ]
+
+  ...
+}
+```
+Remember to update the relevant fields in the `tender` block:
+
+```json
+{
+  ...
+  "numberOfTenderers": "4",
+  "tenderers": [
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57"
+    },
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58"
+    },
+    {
+      "name": "Supplier 3",
+      "id": "GB-COH-00000001-supplier_59"
+    },
+    {
+      "name": "Supplier 4",
+      "id": "GB-COH-00000001-supplier_60"
+    }
+  ]
+  ...
+}
+```
+
+Next the Framework Agreement is finalised. Supplier 1, Supplier 2, and Supplier 3 have made it into the framework. Poor Supplier 4 was the only one excluded:
+> Remember to update the entries under `release/parties` as well!
+```json
+{
+  "awards": [
+    {
+      "id": "ocds-b5fd17-second_example_framework-award",
+      "title": "Award of suppliers on the example framework",
+      "description": "Suppliers 1, 2, and 3 have been awarded a place on the framework",
+      "status": "active",
+      "date": "2019-04-01T00:00:00Z",
+      "value": {
+        "amount": 1000000,
+        "currency": "GBP"
+      },
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        },
+        {
+          "name": "Supplier 2",
+          "id": "GB-COH-00000002-supplier_58"
+        },
+        {
+          "name": "Supplier 3",
+          "id": "GB-COH-00000001-supplier_59"
+        }
+      ],
+      "contractPeriod": {
+        "startDate": "2019-04-01",
+        "endDate": "2020-03-31"
+      }
+    }
+  ]
+}
+```
 ### Buyers under a separate publisher make Direct Call-Offs (Contract)
 
 ### A buyer under a separate publisher runs a mini-competition (relatedProcess)
