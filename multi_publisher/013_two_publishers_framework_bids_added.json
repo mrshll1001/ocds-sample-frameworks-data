@@ -1,0 +1,110 @@
+{
+  "ocid": "ocds-b5fd17-second_example_framework",
+  "id": "ocds-b5fd17-second_example_framework-tenderUpdate-2019-03-31T00:00:00Z",
+  "date": "2019-03-31T00:00:00Z",
+  "tag": [
+    "tenderUpdate"
+  ],
+  "initiationType": "tender",
+  "parties": [
+    {
+      "name": "Crown Commercial Services",
+      "id": "GB-GOR-EA1015",
+      "identifer": {
+        "scheme": "GB-GOR",
+        "id": "EA1015"
+      },
+      "roles": [
+        "procuringEntity"
+      ]
+    },
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000001"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000002"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Supplier 3",
+      "id": "GB-COH-00000001-supplier_59",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000003"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Supplier 4",
+      "id": "GB-COH-00000001-supplier_60",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000004"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    }
+  ],
+  "tender": {
+    "id": "ocds-b5fd17-second_example_framework-tender",
+    "title": "An Example National Framework",
+    "description": "An Example National Framework",
+    "status": "active",
+    "procuringEntity": {
+      "name": "Crown Commercial Services",
+      "id": "GB-LAS-GLG"
+    },
+    "value": {
+      "amount": "1000000",
+      "currency": "GBP"
+    },
+    "tenderPeriod": {
+      "startDate": "2019-03-01",
+      "endDate": "2019-03-31"
+    },
+    "awardPeriod": {
+      "endDate": "2019-04-01"
+    },
+    "contractPeriod": {
+      "startDate": "2019-04-01",
+      "endDate": "2020-03-31"
+    },
+    "numberOfTenderers": "4",
+    "tenderers": [
+      {
+        "name": "Supplier 1",
+        "id": "GB-COH-00000001-supplier_57"
+      },
+      {
+        "name": "Supplier 2",
+        "id": "GB-COH-00000001-supplier_58"
+      },
+      {
+        "name": "Supplier 3",
+        "id": "GB-COH-00000001-supplier_59"
+      },
+      {
+        "name": "Supplier 4",
+        "id": "GB-COH-00000001-supplier_60"
+      }
+    ]
+  }
+}

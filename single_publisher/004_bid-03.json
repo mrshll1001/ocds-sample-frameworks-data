@@ -1,0 +1,93 @@
+{
+  "ocid": "ocds-r6ebe6-example_framework",
+  "id": "ocds-r6ebe6-example_framework-tenderUpdate-2019-01-04T00:00:00Z",
+  "date": "2019-01-04T00:00:00Z",
+  "tag": ["tenderUpdate"],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
+  "parties":[
+    {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG",
+    "identifer": {
+      "scheme": "GB-LAS",
+      "id": "GLG"
+    },
+    "roles": [ "buyer", "procuringEntity" ]
+
+  },
+    {
+    "name": "Supplier 1",
+    "id": "GB-COH-00000001-supplier_57",
+    "identifer": {
+      "scheme": "GB-COH",
+      "id": "00000001"
+    },
+    "roles": [ "tenderer" ]
+
+  },
+  {
+  "name": "Supplier 2",
+  "id": "GB-COH-00000001-supplier_58",
+  "identifer": {
+    "scheme": "GB-COH",
+    "id": "00000002"
+  },
+  "roles": [ "tenderer" ]
+
+},
+{
+"name": "Supplier 3",
+"id": "GB-COH-00000001-supplier_59",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "00000003"
+},
+"roles": [ "tenderer" ]
+
+}
+  ],
+  "tender": {
+    "id": "ocds-r6ebe6-example_framework-tender",
+    "title": "An Example Framework",
+    "description": "An Example Framework",
+    "status": "active",
+    "procuringEntity": {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG"
+    },
+    "value": {
+      "amount": "1000000",
+      "currency": "GBP"
+    },
+    "tenderPeriod": {
+      "startDate": "2019-01-01",
+      "endDate": "2019-01-31"
+    },
+    "awardPeriod": {
+      "endDate": "2019-02-01"
+    },
+    "contractPeriod": {
+      "startDate": "2019-02-02",
+      "endDate": "2020-01-31"
+    },
+    "numberOfTenderers": "3",
+    "tenderers": [
+      {
+        "name": "Supplier 1",
+        "id": "GB-COH-00000001-supplier_57"
+      },
+      {
+        "name": "Supplier 2",
+        "id": "GB-COH-00000002-supplier_58"
+      },
+      {
+        "name": "Supplier 3",
+        "id": "GB-COH-00000001-supplier_59"
+      }
+    ]
+  }
+}

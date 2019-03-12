@@ -1,0 +1,92 @@
+{
+  "ocid": "ocds-r6ebe6-example_framework",
+  "id": "ocds-r6ebe6-example_framework-award-2019-02-01T00:00:00Z",
+  "date": "2019-02-01T00:00:00Z",
+  "tag": [
+    "award"
+  ],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
+  "parties": [
+    {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG",
+    "identifer": {
+      "scheme": "GB-LAS",
+      "id": "GLG"
+    },
+    "roles": [ "buyer", "procuringEntity" ]
+
+  },
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000001"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000002"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "Supplier 3",
+      "id": "GB-COH-00000001-supplier_59",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000003"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "ocds-r6ebe6-example_framework-award-01",
+      "title": "Award of suppliers on the example framework",
+      "description": "Suppliers 1, 2, and 3 have been awarded a place on the framework",
+      "status": "active",
+      "date": "2019-02-01T00:00:00Z",
+      "value": {
+        "amount": 1000000,
+        "currency": "GBP"
+      },
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        },
+        {
+          "name": "Supplier 2",
+          "id": "GB-COH-00000002-supplier_58"
+        },
+        {
+          "name": "Supplier 3",
+          "id": "GB-COH-00000001-supplier_59"
+        }
+      ],
+      "contractPeriod": {
+        "startDate": "2019-02-02",
+        "endDate": "2020-01-31"
+      }
+    }
+  ]
+}

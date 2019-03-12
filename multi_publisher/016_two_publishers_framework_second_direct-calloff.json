@@ -1,0 +1,99 @@
+/* This presumes the presence of the Contract Suppliers Extension */
+{
+  "ocid": "ocds-b5fd17-second_example_framework",
+  "id": "ocds-b5fd17-second_example_framework-contract-2019-04-20 T00:00:00Z",
+  "date": "2019-04-20T00:00:00Z",
+  "tag": [
+    "contract"
+  ],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "East Ayrshire",
+    "id": "GB-LAS-EAY"
+  },
+  "parties": [
+    {
+      "name": "Crown Commercial Services",
+      "id": "GB-GOR-EA1015",
+      "identifer": {
+        "scheme": "GB-GOR",
+        "id": "EA1015"
+      },
+      "roles": [
+        "procuringEntity"
+      ]
+    },
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000001"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000002"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "Supplier 3",
+      "id": "GB-COH-00000001-supplier_59",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000003"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "East Ayrshire",
+      "id": "GB-LAS-EAY",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "EAY"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "id": "ocds-b5fd17-second_example_framework-contract-02",
+      "awardID": "ocds-b5fd17-second_example_framework-award",
+      "title": "The Second Direct Call-Off ",
+      "description": "A direct call off to buy things from Supplier 2 ",
+      "status": "active",
+      "period": {
+        "startDate": "2019-04-20T00:00:00Z",
+        "endDate": "2019-04-20T00:00:00Z"
+      },
+      "value": {
+        "amount": 5000,
+        "currency": "GBP"
+      },
+      "dateSigned": "2019-04-20T00:00:00Z",
+      "suppliers": [
+        {
+          "name": "Supplier 2",
+          "id": "GB-COH-00000001-supplier_58"
+        }
+      ]
+    }
+  ]
+}
