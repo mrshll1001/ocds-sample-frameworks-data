@@ -13,15 +13,17 @@
   },
   "parties": [
     {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG",
-    "identifer": {
-      "scheme": "GB-LAS",
-      "id": "GLG"
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
     },
-    "roles": [ "buyer", "procuringEntity" ]
-
-  },
     {
       "name": "Supplier 1",
       "id": "GB-COH-00000001-supplier_57",
@@ -62,27 +64,25 @@
   "contracts": [
     {
       "id": "ocds-r6ebe6-example_framework-contract-01",
-          "awardID": "ocds-r6ebe6-example_framework-award-01",
-          "title": "The First Direct Call-Off",
-          "description": "A direct call off to buy things from Supplier 1 ",
-          "status": "active",
-          "period": {
-            "startDate": "2019-03-01T00:00:00Z",
-            "endDate": "2019-03-01T00:00:00Z"
-          },
-          "value": {
-            "amount": 1000,
-            "currency": "GBP"
-          },
-          "dateSigned": "2019-03-01T00:00:00Z",
-          "suppliers": [
-            {
-              "name": "Supplier 1",
-              "id": "GB-COH-00000001-supplier_57"
-            }
-          ]
-
+      "awardID": "ocds-r6ebe6-example_framework-award-01",
+      "title": "The First Direct Call-Off",
+      "description": "A direct call off to buy things from Supplier 1 ",
+      "status": "active",
+      "period": {
+        "startDate": "2019-03-01T00:00:00Z",
+        "endDate": "2019-03-01T00:00:00Z"
+      },
+      "value": {
+        "amount": 1000,
+        "currency": "GBP"
+      },
+      "dateSigned": "2019-03-01T00:00:00Z",
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        }
+      ]
     }
-
   ]
 }

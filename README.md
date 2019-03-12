@@ -157,9 +157,165 @@ A release may be made every time a tenderer places a bid, or a single release ma
   ]
 }
 ```
+When a framework is finalised, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Supplier 1, Supplier 2, and Supplier 3 have been awarded a position onto the framework.
+
+```json
+{
+  "ocid": "ocds-r6ebe6-example_framework",
+  "id": "ocds-r6ebe6-example_framework-award-2019-02-01T00:00:00Z",
+  "date": "2019-02-01T00:00:00Z",
+  "tag": [
+    "award"
+  ],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
+  "parties": [
+    {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    },
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000001"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000002"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    },
+    {
+      "name": "Supplier 3",
+      "id": "GB-COH-00000001-supplier_59",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "00000003"
+      },
+      "roles": [
+        "tenderer",
+        "supplier"
+      ]
+    }
+  ]
+...
+}
+```
+
+An `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. For brevity, this sample shows a single award adding multiple suppliers onto the framework. Publishers seeking extra granularity may publish individual awards for each supplier's place on the contract:
+
+```json
+
+  "awards": [
+    {
+      "id": "ocds-r6ebe6-example_framework-award-01",
+      "title": "Award of suppliers on the example framework",
+      "description": "Suppliers 1, 2, and 3 have been awarded a place on the framework",
+      "status": "active",
+      "date": "2019-02-01T00:00:00Z",
+      "value": {
+        "amount": 1000000,
+        "currency": "GBP"
+      },
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        },
+        {
+          "name": "Supplier 2",
+          "id": "GB-COH-00000002-supplier_58"
+        },
+        {
+          "name": "Supplier 3",
+          "id": "GB-COH-00000001-supplier_59"
+        }
+      ],
+      "contractPeriod": {
+        "startDate": "2019-02-02",
+        "endDate": "2020-01-31"
+      }
+    }
+  ]
+```
+
+The framework is now set up, and call-offs may now be made.
 
 ### Making Direct Call-Offs (Contract)
+A Direct Call-Off from a Framework agreement occurs when goods or services are procured directly from a supplier on an existing Framework agreement without any further tendering process. For example a Framework may be set up to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
 
+In OCDS a Direct Call-Off from a Framework agreement is represented by publishing a new `contract` block for each call-off under the *same OCID as the initial Framework Agreement*. Depending on how the `award` stage of the framework was published an extension may be required. This is because the contract block does not usually contain supplier information. Usually the supplier of a contract is determined looking at the `awardID` referenced in the contract block, and using the supplier information in this award. Therefore two options are available to publishers:
+
++ If a single `award` was published adding multiple suppliers to the framework, include the [Contract Suppliers Extension](https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension). This adds another `suppliers` array to the contract block.
++ If multiple `award` blocks are created for each supplier being added to the framework, ensure that the contract's `awardID` field is populated appropriately (ie using the correct award for the supplier).
+
+> The following samples presumes a single award adding multiple suppliers to the framework, and the presence of the Contract Suppliers Extension
+
+Following the previous Framework Agreement, Glasgow now make a Direct Call-Off to Supplier 1. A release is made with the appropriate release information:
+
+```json
+{
+  "ocid": "ocds-r6ebe6-example_framework",
+  "id": "ocds-r6ebe6-example_framework-contract-2019-03-01T00:00:00Z",
+  "date": "2019-03-01T00:00:00Z",
+  "tag": [
+    "contract"
+  ]
+  ...
+}
+```
+The `contracts` array is then added to with the details of the contract, including the supplier information since the previous award added multiple suppliers to the Framework Agreement.
+
+```json
+"contracts": [
+  {
+    "id": "ocds-r6ebe6-example_framework-contract-01",
+    "awardID": "ocds-r6ebe6-example_framework-award-01",
+    "title": "The First Direct Call-Off",
+    "description": "A direct call off to buy things from Supplier 1 ",
+    "status": "active",
+    "period": {
+      "startDate": "2019-03-01T00:00:00Z",
+      "endDate": "2019-03-01T00:00:00Z"
+    },
+    "value": {
+      "amount": 1000,
+      "currency": "GBP"
+    },
+    "dateSigned": "2019-03-01T00:00:00Z",
+    "suppliers": [
+      {
+        "name": "Supplier 1",
+        "id": "GB-COH-00000001-supplier_57"
+      }
+    ]
+  }
+]
+```
 ### Running a Mini-Competition (relatedProcess)
 
 ## Framework Agreement across Multiple Publishers
