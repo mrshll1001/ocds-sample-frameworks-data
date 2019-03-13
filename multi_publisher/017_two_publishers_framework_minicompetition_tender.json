@@ -2,29 +2,33 @@
   "ocid": "ocds-r6ebe6-minicompetiion_from_other_publisher_framework",
   "id": "ocds-r6ebe6-minicompetiion_from_other_publisher_framework-tender-2019-05-01T00:00:00Z",
   "date": "2019-05-01T00:00:00Z",
-  "tag": ["tender"],
+  "tag": [
+    "tender"
+  ],
   "initiationType": "tender",
   "buyer": {
     "name": "Edinburgh",
     "id": "GB-LAS-EDH"
   },
-  "parties":[
+  "parties": [
     {
-    "name": "Edinburgh",
-    "id": "GB-LAS-EDH",
-    "identifer": {
-      "scheme": "GB-LAS",
-      "id": "EDH"
-    },
-    "roles": [ "buyer", "procuringEntity" ]
-
+      "name": "Edinburgh",
+      "id": "GB-LAS-EDH",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "EDH"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
     }
   ],
   "relatedProcesses": [
     {
       "id": "ocds-b5fd17-second_example_framework-parent",
       "relationship": "framework",
-      "title":"An Example National Framework",
+      "title": "An Example National Framework",
       "scheme": "ocid",
       "identifer": "ocds-b5fd17-second_example_framework",
       "uri": "https://example.org/records/ocds-r6ebe6-example_framework"
@@ -56,7 +60,6 @@
       "endDate": "2020-01-31"
     },
     "numberOfTenderers": "0",
-    "tenderers": [
-    ]
+    "tenderers": []
   }
 }

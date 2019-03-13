@@ -6,10 +6,6 @@
     "tenderUpdate"
   ],
   "initiationType": "tender",
-  "buyer": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  },
   "parties": [
     {
       "name": "Glasgow City",
@@ -19,7 +15,6 @@
         "id": "GLG"
       },
       "roles": [
-        "buyer",
         "procuringEntity"
       ]
     },

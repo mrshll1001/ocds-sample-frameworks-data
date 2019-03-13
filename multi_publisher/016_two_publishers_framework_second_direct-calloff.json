@@ -1,4 +1,3 @@
-/* This presumes the presence of the Contract Suppliers Extension */
 {
   "ocid": "ocds-b5fd17-second_example_framework",
   "id": "ocds-b5fd17-second_example_framework-contract-2019-04-20 T00:00:00Z",
@@ -7,10 +6,6 @@
     "contract"
   ],
   "initiationType": "tender",
-  "buyer": {
-    "name": "East Ayrshire",
-    "id": "GB-LAS-EAY"
-  },
   "parties": [
     {
       "name": "Crown Commercial Services",
@@ -78,6 +73,10 @@
       "awardID": "ocds-b5fd17-second_example_framework-award",
       "title": "The Second Direct Call-Off ",
       "description": "A direct call off to buy things from Supplier 2 ",
+      "buyer": {
+        "name": "East Ayrshire",
+        "id": "GB-LAS-EAY"
+      },
       "status": "active",
       "period": {
         "startDate": "2019-04-20T00:00:00Z",

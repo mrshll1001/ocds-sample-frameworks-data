@@ -1,4 +1,3 @@
-/* This presumes the presence of the Contract Suppliers Extension */
 {
   "ocid": "ocds-b5fd17-second_example_framework",
   "id": "ocds-b5fd17-second_example_framework-contract-2019-04-10 T00:00:00Z",
@@ -7,10 +6,6 @@
     "contract"
   ],
   "initiationType": "tender",
-  "buyer": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  },
   "parties": [
     {
       "name": "Crown Commercial Services",
@@ -60,40 +55,44 @@
       ]
     },
     {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG",
-    "identifer": {
-      "scheme": "GB-LAS",
-      "id": "GLG"
-    },
-    "roles": [ "buyer", "procuringEntity" ]
-
-  }
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
   ],
   "contracts": [
     {
       "id": "ocds-b5fd17-second_example_framework-contract-01",
-          "awardID": "ocds-b5fd17-second_example_framework-award",
-          "title": "The First Direct Call-Off ",
-          "description": "A direct call off to buy things from Supplier 1 ",
-          "status": "active",
-          "period": {
-            "startDate": "2019-04-10T00:00:00Z",
-            "endDate": "2019-04-10T00:00:00Z"
-          },
-          "value": {
-            "amount": 1000,
-            "currency": "GBP"
-          },
-          "dateSigned": "2019-04-10T00:00:00Z",
-          "suppliers": [
-            {
-              "name": "Supplier 1",
-              "id": "GB-COH-00000001-supplier_57"
-            }
-          ]
-
+      "awardID": "ocds-b5fd17-second_example_framework-award",
+      "title": "The First Direct Call-Off ",
+      "description": "A direct call off to buy things from Supplier 1 ",
+      "buyer": {
+        "name": "Glasgow City",
+        "id": "GB-LAS-GLG"
+      },
+      "status": "active",
+      "period": {
+        "startDate": "2019-04-10T00:00:00Z",
+        "endDate": "2019-04-10T00:00:00Z"
+      },
+      "value": {
+        "amount": 1000,
+        "currency": "GBP"
+      },
+      "dateSigned": "2019-04-10T00:00:00Z",
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        }
+      ]
     }
-
   ]
 }
