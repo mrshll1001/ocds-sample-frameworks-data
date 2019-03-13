@@ -1,6 +1,24 @@
 # Sample OCDS Data for Framework Call-Offs
 
-This repository contains sample data for how the various stages of a framework may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and Mini-Competitions in Framework agreements, as well as Dynamic Purchasing Systems.
+This repository contains sample data for how the various stages of a framework may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and Mini-Competitions in Framework Agreements, as well as Dynamic Purchasing Systems.
+
+## Required Extensions
+Framework Agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data. This has implications for the structure of the data, as `buyer` is declared at Release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
+
++ [Multiple Buyers - Contract Level Extension](https://github.com/open-contracting/ocds_multiple_buyers_extension) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each Direct Call-Off to be associated with the purchase.
++ [Contract Suppliers Extension](https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension) adds a `suppliers` array to the `Contract` block; allowing the supplier for each Direct Call-Off to be associated with the purchase.
+
+These should be declared appropriately in the package metadata:
+
+```json
+{
+  "extensions": [
+    "https://github.com/open-contracting/ocds_multiple_buyers_extension",
+    "https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension"
+  ],
+  "releases": []
+}
+```
 
 ## Framework Agreement within a Single Publisher
 The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity for the subsequent call-offs and mini-competitions. Please note that in OCDS buyer and procuring entity may be different at times.
@@ -32,15 +50,9 @@ The framework is set up by first publishing a tender block opening up the procur
 }
 ```
 
-Glasgow City is the buyer in the framework, as their funds will be used to pay for any subsequent call-offs. They appear as `buyer` in the release, and have an entry in the `parties` array:
+Glasgow City is the one setting up the framework, so they have an entry in the `parties` array:
 ```json
 {
-  ...
-
-  "buyer": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  },
   "parties": [
     {
       "name": "Glasgow City",
@@ -50,21 +62,16 @@ Glasgow City is the buyer in the framework, as their funds will be used to pay f
         "id": "GLG"
       },
       "roles": [
-        "buyer",
         "procuringEntity"
       ]
     }
-  ],
-
-  ...
-
+  ]
 }
 ```
 
-The `tender` block is populated normally, with information about the framework tender. Glasgow City is the procuring entity as well as the buyer, so they are referenced in `procuringEntity`.
+The `tender` block is populated normally, with information about the framework tender. Glasgow City is the procuring entity so they are referenced in `procuringEntity`.
 ```json
 {
-
   "tender": {
     "id": "ocds-r6ebe6-example_framework-tender",
     "title": "An Example Framework",
@@ -78,7 +85,6 @@ The `tender` block is populated normally, with information about the framework t
       "amount": "1000000",
       "currency": "GBP"
     }
-    ...
   }
 }
 
@@ -104,7 +110,7 @@ When someone bids for a position on the framework, they are added to the `partie
 }
 ```
 
-As well as this, in the  `tender` block changes are made to add their reference to the list of tenderers, and update the total number of tenderers:
+As well as this, in the `tender` block changes are made to add their reference to the list of tenderers, and update the total number of tenderers:
 
 ```json
 {
@@ -127,7 +133,6 @@ A release may be made every time a tenderer places a bid, or a single release ma
 
 ```json
 {
-  ...
   "numberOfTenderers": "6",
   "tenderers": [
     {
@@ -168,10 +173,6 @@ When a framework is finalised, a release is made for the `award` award stage lik
     "award"
   ],
   "initiationType": "tender",
-  "buyer": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  },
   "parties": [
     {
       "name": "Glasgow City",
@@ -181,7 +182,6 @@ When a framework is finalised, a release is made for the `award` award stage lik
         "id": "GLG"
       },
       "roles": [
-        "buyer",
         "procuringEntity"
       ]
     },
@@ -222,7 +222,6 @@ When a framework is finalised, a release is made for the `award` award stage lik
       ]
     }
   ]
-...
 }
 ```
 
@@ -270,14 +269,7 @@ Full examples:
 + [009_first_direct_calloff.json](/single_publisher/009_first_direct_calloff.json)
 + [010_second_direct_calloff.json](/single_publisher/010_second_direct_calloff.json)
 
-A Direct Call-Off from a Framework agreement occurs when goods or services are procured directly from a supplier on an existing Framework agreement without any further tendering process. For example a Framework may be set up to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
-
-In OCDS a Direct Call-Off from a Framework agreement is represented by publishing a new `contract` block for each call-off under the *same OCID as the initial Framework Agreement*. Depending on how the `award` stage of the framework was published an extension may be required. This is because the contract block does not usually contain supplier information. Usually the supplier of a contract is determined looking at the `awardID` referenced in the contract block, and using the supplier information in this award. Therefore two options are available to publishers:
-
-+ If a single `award` was published adding multiple suppliers to the framework, include the [Contract Suppliers Extension](https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension). This adds another `suppliers` array to the contract block.
-+ If multiple `award` blocks are created for each supplier being added to the framework, ensure that the contract's `awardID` field is populated appropriately (ie using the correct award for the supplier).
-
-> The following samples presumes a single award adding multiple suppliers to the framework, and the presence of the Contract Suppliers Extension
+A Direct Call-Off from a Framework Agreement occurs when goods or services are procured directly from a supplier on an existing Framework Agreement without any further tendering process. For example a Framework may be set up to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
 
 Following the previous Framework Agreement, Glasgow now make a Direct Call-Off to Supplier 1. A release is made with the appropriate release information:
 
@@ -289,36 +281,52 @@ Following the previous Framework Agreement, Glasgow now make a Direct Call-Off t
   "tag": [
     "contract"
   ]
-  ...
 }
 ```
-The `contracts` array is then added to with the details of the contract, including the supplier information since the previous award added multiple suppliers to the Framework Agreement.
+The `contracts` array is then added to with the details of the contract, including the supplier and buyer information:
 
 ```json
-"contracts": [
-  {
-    "id": "ocds-r6ebe6-example_framework-contract-01",
-    "awardID": "ocds-r6ebe6-example_framework-award-01",
-    "title": "The First Direct Call-Off",
-    "description": "A direct call off to buy things from Supplier 1 ",
-    "status": "active",
-    "period": {
-      "startDate": "2019-03-01T00:00:00Z",
-      "endDate": "2019-03-01T00:00:00Z"
-    },
-    "value": {
-      "amount": 1000,
-      "currency": "GBP"
-    },
-    "dateSigned": "2019-03-01T00:00:00Z",
-    "suppliers": [
-      {
-        "name": "Supplier 1",
-        "id": "GB-COH-00000001-supplier_57"
-      }
-    ]
-  }
-]
+{
+  "contracts": [
+    {
+      "id": "ocds-r6ebe6-example_framework-contract-01",
+      "awardID": "ocds-r6ebe6-example_framework-award-01",
+      "title": "The First Direct Call-Off",
+      "description": "A direct call off to buy things from Supplier 1 ",
+      "buyer": {
+        "name": "Glasgow City",
+        "id": "GB-LAS-GLG"
+      },
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Glasgow City is now a buyer, so their entry in the `parties` array is updated with the role of `"buyer"`:
+
+```json
+{
+  "parties": [
+    {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
+  ]
+}
 ```
 
 This is repeated for subsequent Direct Call-Offs.
@@ -333,7 +341,9 @@ Another form of calling off from a Framework Agreement is the *Mini Competition*
 Representing a Mini-Competition in OCDS is straightforward. Broadly:
 + A *new contracting process* with a *new OCID* is created to represent the Mini Competition
 + In the new process the `relatedProcesses` array contains an entry referencing the OCID of the existing Framework Agreement
-+ In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender
++ In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender.
+
+> Note: This is a new contracting process where the buyer is known and the suppliers will be determined by the award block. Therefore the schema changes made by [Multiple Buyers - Contract Level Extension](https://github.com/open-contracting/ocds_multiple_buyers_extension) and [Contract Suppliers Extension](https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension) that apply to the Contract block may not be necessary for Mini-Competitions.
 
 Following the previous sample of the Glasgow City Framework Agreement; after making their Direct Call-Offs Glasgow City hold a Mini-Competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original Framework Agreement:
 
@@ -400,7 +410,9 @@ Since this is a `tender` release the `tender` block contains information about t
 From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
 
 ## Framework Agreement across Multiple Publishers
-There is very little difference in the OCDS representing a framework agreement handled by a single publisher, and a framework agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
+Framework Agreements may sometimes span data published by two or more different publishers. For example a Framework Agreement set up and published by the UK National Government may be called off by buyers that are published by the Scottish Government or a regional publisher.
+
+ There is very little difference in the OCDS representing a Framework Agreement handled by a single publisher, and a Framework Agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
 
 In the following samples, the Framework Agreement is published by *Crown Commercial Services* using their registered prefix of `ocds-b5fd17`. The purchases from the framework are made by entities published by *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
@@ -410,46 +422,50 @@ Full Examples:
 + [013_two_publishers_framework_bids_added.json](/multi_publisher/013_two_publishers_framework_bids_added.json)
 + [014_two_publishers_framework_award.json](/multi_publisher/014_two_publishers_framework_award.json)
 
-The first stages of the Framework Agreement are very similar to that when it only concerns a single publisher. In this sample, Crown Commercial Services commissions a Framework Agreement. Since they will not be the ones calling off from this framework they do *not* have the role of `buyer` and are not referenced in the `buyer` field:
+The first stages of the Framework Agreement are very similar to that when it only concerns a single publisher. In this sample, Crown Commercial Services commissions a Framework Agreement:
 
 ```json
 {
   "ocid": "ocds-b5fd17-second_example_framework",
   "id": "ocds-b5fd17-second_example_framework-tender-2019-03-01T00:00:00Z",
   "date": "2019-03-01T00:00:00Z",
-  "tag": ["tender"],
+  "tag": [
+    "tender"
+  ],
   "initiationType": "tender",
   "parties": [
     {
-    "name": "Crown Commercial Services",
-    "id": "GB-GOR-EA1015",
-    "identifer": {
-      "scheme": "GB-GOR",
-      "id": "EA1015"
-    },
-    "roles": [ "procuringEntity" ]
+      "name": "Crown Commercial Services",
+      "id": "GB-GOR-EA1015",
+      "identifer": {
+        "scheme": "GB-GOR",
+        "id": "EA1015"
+      },
+      "roles": [
+        "procuringEntity"
+      ]
     }
   ]
-  ...
 }
 ```
-They are the procuring entity of the framework, however, so they are referenced under `tender/procuringEntity`:
+They are the procuring entity of the framework so they are referenced under `tender/procuringEntity`:
 
 ```json
-"tender": {
-  "id": "ocds-b5fd17-second_example_framework-tender",
-  "title": "An Example National Framework",
-  "description": "An Example National Framework",
-  "status": "active",
-  "procuringEntity": {
-    "name": "Crown Commercial Services",
-    "id": "GB-LAS-GLG"
-  },
-  "value": {
-    "amount": "1000000",
-    "currency": "GBP"
+{
+  "tender": {
+    "id": "ocds-b5fd17-second_example_framework-tender",
+    "title": "An Example National Framework",
+    "description": "An Example National Framework",
+    "status": "active",
+    "procuringEntity": {
+      "name": "Crown Commercial Services",
+      "id": "GB-LAS-GLG"
+    },
+    "value": {
+      "amount": "1000000",
+      "currency": "GBP"
+    }
   }
-  ...
 }
 ```
 Bidders are added to the framework as per the previous example. For brevity this has been condensed to a single release:
@@ -519,15 +535,12 @@ Bidders are added to the framework as per the previous example. For brevity this
       ]
     }
   ]
-
-  ...
 }
 ```
 Remember to update the relevant fields in the `tender` block:
 
 ```json
 {
-  ...
   "numberOfTenderers": "4",
   "tenderers": [
     {
@@ -547,7 +560,6 @@ Remember to update the relevant fields in the `tender` block:
       "id": "GB-COH-00000001-supplier_60"
     }
   ]
-  ...
 }
 ```
 
@@ -588,11 +600,80 @@ Next the Framework Agreement is finalised. Supplier 1, Supplier 2, and Supplier 
   ]
 }
 ```
+
+The framework is now set up, and call-offs may be made from it.
+
 ### Buyers under a separate publisher make Direct Call-Offs (Contract)
+Full Examples:
++ [015_two_publishers_framework_first_direct-calloff.json](/multi_publisher/015_two_publishers_framework_first_direct-calloff.json)
++ [016_two_publishers_framework_second_direct-calloff.json](/multi_publisher/016_two_publishers_framework_second_direct-calloff.json)
+
+With the Framework Agreement in place and published by *Crown Commercial Services*, it becomes straightforward to represent Direct Call-offs made by another publisher.
+
+A Direct Call-Off is represented by a `contract` block; so an OCDS release is published by *Scottish Government* containing the details of the Call-Off. Since it is published by *Scottish Government*, they use their registered prefix for the release id:
+ ```json
+ {
+   "ocid": "ocds-b5fd17-second_example_framework",
+   "id": "ocds-r6ebe6-second_example_framework-contract-2019-04-20 T00:00:00Z",
+   "date": "2019-04-20T00:00:00Z",
+   "tag": [
+     "contract"
+   ]
+ }
+ ```
+
+ The buyer is also added to the `parties` array with the appropriate role, in this case *East Ayrshire*:
+ ```json
+{
+  "parties": [
+    {
+      "name": "East Ayrshire",
+      "id": "GB-LAS-EAY",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "EAY"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
+  ]
+}
+ ```
+
+ As before the contract section refers back to the `awardID` of the Framework Agreement published by *Crown Commercial Services*. This will require access to the Award ID and the OCID of the Framework Agreement:
+```json
+{
+  "contracts": [
+    {
+      "id": "ocds-r6ebe6-second_example_framework-contract-02",
+      "awardID": "ocds-b5fd17-second_example_framework-award"
+    }
+  ]
+}
+```
+Remember to include the `buyer` and `suppliers` in this section, added by the extensions used:
+```json
+{
+  "buyer": {
+    "name": "East Ayrshire",
+    "id": "GB-LAS-EAY"
+  },
+  "suppliers": [
+    {
+      "name": "Supplier 2",
+      "id": "GB-COH-00000001-supplier_58"
+    }
+  ],
+}
+```
 
 ### A buyer under a separate publisher runs a mini-competition (relatedProcess)
 
+
+
 ## Dynamic Purchasing Systems
-A Dynamic Purchasing System (DPS) is similar to a framework agreement with the exception that new suppliers may be awarded a position on the system at any time.
+A Dynamic Purchasing System (DPS) is similar to a Framework Agreement with the exception that new suppliers may be awarded a position on the system at any time.
 
 TODO finish this

@@ -1,6 +1,6 @@
 {
   "ocid": "ocds-b5fd17-second_example_framework",
-  "id": "ocds-b5fd17-second_example_framework-contract-2019-04-10 T00:00:00Z",
+  "id": "ocds-r6ebe6-second_example_framework-contract-2019-04-10 T00:00:00Z",
   "date": "2019-04-10T00:00:00Z",
   "tag": [
     "contract"
@@ -69,7 +69,7 @@
   ],
   "contracts": [
     {
-      "id": "ocds-b5fd17-second_example_framework-contract-01",
+      "id": "ocds-r6ebe6-second_example_framework-contract-01",
       "awardID": "ocds-b5fd17-second_example_framework-award",
       "title": "The First Direct Call-Off ",
       "description": "A direct call off to buy things from Supplier 1 ",

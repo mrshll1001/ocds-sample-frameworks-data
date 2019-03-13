@@ -66,6 +66,12 @@
         "name": "Glasgow City",
         "id": "GB-LAS-GLG"
       },
+      "suppliers": [
+        {
+          "name": "Supplier 1",
+          "id": "GB-COH-00000001-supplier_57"
+        }
+      ],
       "status": "active",
       "period": {
         "startDate": "2019-03-01T00:00:00Z",
@@ -75,13 +81,7 @@
         "amount": 1000,
         "currency": "GBP"
       },
-      "dateSigned": "2019-03-01T00:00:00Z",
-      "suppliers": [
-        {
-          "name": "Supplier 1",
-          "id": "GB-COH-00000001-supplier_57"
-        }
-      ]
+      "dateSigned": "2019-03-01T00:00:00Z"
     }
   ]
 }
