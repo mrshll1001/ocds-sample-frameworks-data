@@ -3,7 +3,7 @@
 This repository contains sample data for how the various stages of a framework may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and Mini-Competitions in Framework Agreements, as well as Dynamic Purchasing Systems.
 
 ## Required Extensions
-Framework Agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data. This has implications for the structure of the data, as `buyer` is declared at Release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
+Framework Agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
 
 + [Multiple Buyers - Contract Level Extension](https://github.com/open-contracting/ocds_multiple_buyers_extension) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each Direct Call-Off to be associated with the purchase.
 + [Contract Suppliers Extension](https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension) adds a `suppliers` array to the `Contract` block; allowing the supplier for each Direct Call-Off to be associated with the purchase.
@@ -46,7 +46,7 @@ The framework is set up by first publishing a tender block opening up the procur
   "tag": ["tender"],
   "initiationType": "tender"
 
-  ...
+
 }
 ```
 
@@ -114,7 +114,7 @@ As well as this, in the `tender` block changes are made to add their reference t
 
 ```json
 {
-...
+
   "numberOfTenderers": "1",
   "tenderers": [
     {
@@ -124,7 +124,7 @@ As well as this, in the `tender` block changes are made to add their reference t
   ]
 }
 
-...
+
 
 }
 ```
@@ -384,7 +384,7 @@ Following the previous sample of the Glasgow City Framework Agreement; after mak
       "uri": "https://example.org/records/ocds-r6ebe6-example_framework"
     }
   ],
-  ...
+
 }
 ```
 Since this is a `tender` release the `tender` block contains information about the tender opportunity. The `procurementMethod` is set to `selective` to indicate that this is not an open tender.
@@ -404,7 +404,7 @@ Since this is a `tender` release the `tender` block contains information about t
     "amount": "2000",
     "currency": "GBP"
   }
-  ...
+
 }
 ```
 From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
@@ -669,11 +669,56 @@ Remember to include the `buyer` and `suppliers` in this section, added by the ex
 }
 ```
 
-### A buyer under a separate publisher runs a mini-competition (relatedProcess)
+### A buyer under a separate publisher runs a mini-competition (`relatedProcess`)
+Full Example:
++ [017_two_publishers_framework_minicompetition_tender.json](/multi_publisher/017_two_publishers_framework_minicompetition_tender.json)
 
+It is even more straightforward to run a mini-competition calling off of the framework. Since this is a new contracting process, a reference to the original Framework OCID should be included and the contracting process should proceed as a normal process under OCDS.
+
+In this example, Edinburgh are running a mini-competition on the Framework Agreement set up previously by *Crown Commercial Services*:
+
+```json
+{
+  "ocid": "ocds-r6ebe6-minicompetiion_from_other_publisher_framework",
+  "id": "ocds-r6ebe6-minicompetiion_from_other_publisher_framework-tender-2019-05-01T00:00:00Z",
+  "date": "2019-05-01T00:00:00Z",
+  "tag": [
+    "tender"
+  ],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "Edinburgh",
+    "id": "GB-LAS-EDH"
+  },
+  "parties": [
+    {
+      "name": "Edinburgh",
+      "id": "GB-LAS-EDH",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "EDH"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
+  ],
+  "relatedProcesses": [
+    {
+      "id": "ocds-b5fd17-second_example_framework-parent",
+      "relationship": "framework",
+      "title": "An Example National Framework",
+      "scheme": "ocid",
+      "identifer": "ocds-b5fd17-second_example_framework",
+      "uri": "https://example.org/records/ocds-r6ebe6-example_framework"
+    }
+  ]
+}
+```
 
 
 ## Dynamic Purchasing Systems
 A Dynamic Purchasing System (DPS) is similar to a Framework Agreement with the exception that new suppliers may be awarded a position on the system at any time.
 
-TODO finish this
++ What implications does this have for our award model?
