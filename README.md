@@ -25,7 +25,7 @@ The following examples represent the creation of a framework by Glasgow City, wh
 
 In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
-### Setting up the framework (Tender and Award)
+### Establishing the framework (Tender and Award)
 
 Full examples:
 + [001_framework_set-up.json](/single_publisher/001_framework_set-up.json)
@@ -37,7 +37,7 @@ Full examples:
 + [007_bid-06.json](/single_publisher/007_bid-06.json)
 + [008_framework_award.json](/single_publisher/008_framework_award.json)
 
-The framework is set up by first publishing a tender block opening up the procurement process as any normal contracting process published under OCDS.
+The framework is established by first publishing a tender release opening up the procurement process as any normal contracting process published under OCDS.
 ```json
 {
   "ocid": "ocds-r6ebe6-example_framework",
@@ -50,7 +50,7 @@ The framework is set up by first publishing a tender block opening up the procur
 }
 ```
 
-Glasgow City is the one setting up the framework, so they have an entry in the `parties` array:
+Glasgow City is the one Establishing the framework, so they have an entry in the `parties` array:
 ```json
 {
   "parties": [
@@ -262,14 +262,14 @@ An `awards` entry must also be published with the relevant information about the
   ]
 ```
 
-The framework is now set up, and call-offs may now be made.
+The framework is now established, and call-offs may now be made.
 
 ### Making direct call-offs (Contract)
 Full examples:
 + [009_first_direct_calloff.json](/single_publisher/009_first_direct_calloff.json)
 + [010_second_direct_calloff.json](/single_publisher/010_second_direct_calloff.json)
 
-A Direct Call-Off from a Framework Agreement occurs when goods or services are procured directly from a supplier on an existing Framework Agreement without any further tendering process. For example a Framework may be set up to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
+A Direct Call-Off from a Framework Agreement occurs when goods or services are procured directly from a supplier on an existing Framework Agreement without any further tendering process. For example a Framework may be established to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
 
 Following the previous Framework Agreement, Glasgow now make a Direct Call-Off to Supplier 1. A release is made with the appropriate release information:
 
@@ -410,7 +410,7 @@ Since this is a `tender` release the `tender` block contains information about t
 From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
 
 ## Framework agreement across multiple publishers
-Framework Agreements may sometimes span data published by two or more different publishers. For example a Framework Agreement set up and published by the UK National Government may be called off by buyers that are published by the Scottish Government or a regional publisher.
+Framework Agreements may sometimes span data published by two or more different publishers. For example a Framework Agreement established and published by the UK National Government may be called off by buyers that are published by the Scottish Government or a regional publisher.
 
  There is very little difference in the OCDS representing a Framework Agreement handled by a single publisher, and a Framework Agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
 
@@ -601,7 +601,7 @@ Next the Framework Agreement is finalised. Supplier 1, Supplier 2, and Supplier 
 }
 ```
 
-The framework is now set up, and call-offs may be made from it.
+The framework is now established, and call-offs may be made from it.
 
 ### Buyers under a separate publisher make direct call-offs (Contract)
 Full Examples:
@@ -675,7 +675,7 @@ Full Example:
 
 It is even more straightforward to run a mini-competition calling off of the framework. Since this is a new contracting process, a reference to the original Framework OCID should be included and the contracting process should proceed as a normal process under OCDS.
 
-In this example, Edinburgh are running a mini-competition on the Framework Agreement set up previously by *Crown Commercial Services*:
+In this example, Edinburgh are running a mini-competition on the Framework Agreement established previously by *Crown Commercial Services*:
 
 ```json
 {
