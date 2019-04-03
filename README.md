@@ -1,8 +1,8 @@
-# Sample OCDS Data for Framework Call-Offs
+# Sample OCDS data for framework call-offs
 
 This repository contains sample data for how the various stages of a framework may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and Mini-Competitions in Framework Agreements, as well as Dynamic Purchasing Systems.
 
-## Required Extensions
+## Required extensions
 Framework Agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
 
 + [Multiple Buyers - Contract Level Extension](https://github.com/open-contracting/ocds_multiple_buyers_extension) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each Direct Call-Off to be associated with the purchase.
@@ -20,12 +20,12 @@ These should be declared appropriately in the package metadata:
 }
 ```
 
-## Framework Agreement within a Single Publisher
+## Framework agreement within a single publisher
 The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity for the subsequent call-offs and mini-competitions. Please note that in OCDS buyer and procuring entity may be different at times.
 
 In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
-### Setting up the Framework (Tender and Award)
+### Setting up the framework (Tender and Award)
 
 Full examples:
 + [001_framework_set-up.json](/single_publisher/001_framework_set-up.json)
@@ -264,7 +264,7 @@ An `awards` entry must also be published with the relevant information about the
 
 The framework is now set up, and call-offs may now be made.
 
-### Making Direct Call-Offs (Contract)
+### Making direct call-offs (Contract)
 Full examples:
 + [009_first_direct_calloff.json](/single_publisher/009_first_direct_calloff.json)
 + [010_second_direct_calloff.json](/single_publisher/010_second_direct_calloff.json)
@@ -331,7 +331,7 @@ Glasgow City is now a buyer, so their entry in the `parties` array is updated wi
 
 This is repeated for subsequent Direct Call-Offs.
 
-### Running a Mini-Competition (`relatedProcess`)
+### Running a mini-competition (`relatedProcess`)
 Full Example:
 + [011_mini-competition_tender.json](/single_publisher/011_mini-competition_tender.json)
 
@@ -409,14 +409,14 @@ Since this is a `tender` release the `tender` block contains information about t
 ```
 From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
 
-## Framework Agreement across Multiple Publishers
+## Framework agreement across multiple publishers
 Framework Agreements may sometimes span data published by two or more different publishers. For example a Framework Agreement set up and published by the UK National Government may be called off by buyers that are published by the Scottish Government or a regional publisher.
 
  There is very little difference in the OCDS representing a Framework Agreement handled by a single publisher, and a Framework Agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
 
 In the following samples, the Framework Agreement is published by *Crown Commercial Services* using their registered prefix of `ocds-b5fd17`. The purchases from the framework are made by entities published by *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
-### Publisher 1 sets up the Framework (Tender and Award)
+### Publisher 1 sets up the framework (Tender and Award)
 Full Examples:
 + [012_two_publishers_framework_setup.json](/multi_publisher/012_two_publishers_framework_setup.json)
 + [013_two_publishers_framework_bids_added.json](/multi_publisher/013_two_publishers_framework_bids_added.json)
@@ -603,7 +603,7 @@ Next the Framework Agreement is finalised. Supplier 1, Supplier 2, and Supplier 
 
 The framework is now set up, and call-offs may be made from it.
 
-### Buyers under a separate publisher make Direct Call-Offs (Contract)
+### Buyers under a separate publisher make direct call-offs (Contract)
 Full Examples:
 + [015_two_publishers_framework_first_direct-calloff.json](/multi_publisher/015_two_publishers_framework_first_direct-calloff.json)
 + [016_two_publishers_framework_second_direct-calloff.json](/multi_publisher/016_two_publishers_framework_second_direct-calloff.json)
