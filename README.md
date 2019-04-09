@@ -76,7 +76,7 @@ Glasgow City is the one establishing the framework, so they have an entry in the
 }
 ```
 
-The `tender` block is populated normally, with information about the framework tender. Glasgow City is the procuring entity so they are referenced in `procuringEntity`.
+The `tender` block is populated normally, with information about the framework tender. For frameworks, `tender/value` shoudl represent the total estimated upper value of the framework. Glasgow City is the procuring entity so they are referenced in `procuringEntity`.
 
 > **Tender Block**
 > The tender release has a populated `tender` block with the following information
