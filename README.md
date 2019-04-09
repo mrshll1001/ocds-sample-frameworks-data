@@ -29,12 +29,6 @@ In these examples the publisher responsible is *Scottish Government* using their
 
 Full examples:
 + [001_framework_set-up.json](/single_publisher/001_framework_set-up.json)
-+ [002_bid-01.json](/single_publisher/002_bid-01.json)
-+ [003_bid-02.json](/single_publisher/003_bid-02.json)
-+ [004_bid-03.json](/single_publisher/004_bid-03.json)
-+ [005_bid-04.json](/single_publisher/005_bid-04.json)
-+ [006_bid-05.json](/single_publisher/006_bid-05.json)
-+ [007_bid-06.json](/single_publisher/007_bid-06.json)
 + [008_framework_award.json](/single_publisher/008_framework_award.json)
 
 The framework is established by first publishing a tender release opening up the procurement process as any normal contracting process published under OCDS.
@@ -266,7 +260,7 @@ Full examples:
 + [009_first_direct_calloff.json](/single_publisher/009_first_direct_calloff.json)
 + [010_second_direct_calloff.json](/single_publisher/010_second_direct_calloff.json)
 
-A Direct Call-Off from a Framework Agreement occurs when goods or services are procured directly from a supplier on an existing Framework Agreement without any further tendering process. For example a Framework may be established to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
+A Direct Call-Off from a Framework Agreement occurs when goods or services are procured directly from a supplier on an existing Framework Agreement without any further competition. For example a Framework may be established to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
 
 Following the previous Framework Agreement, Glasgow now make a Direct Call-Off to Supplier 1. A release is made with the appropriate release information:
 > **Release metadata**
