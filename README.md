@@ -64,6 +64,7 @@ Glasgow City is the one establishing the framework, so they have an entry in the
         "id": "GLG"
       },
       "roles": [
+        "buyer",
         "procuringEntity"
       ]
     }
