@@ -68,7 +68,11 @@ Glasgow City is the one establishing the framework, so they have an entry in the
         "procuringEntity"
       ]
     }
-  ]
+  ],
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  }
 }
 ```
 

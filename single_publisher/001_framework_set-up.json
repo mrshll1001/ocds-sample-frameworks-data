@@ -15,10 +15,15 @@
         "id": "GLG"
       },
       "roles": [
+        "buyer",
         "procuringEntity"
       ]
     }
   ],
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
   "tender": {
     "id": "ocds-r6ebe6-example_framework-tender",
     "title": "An Example Framework",
