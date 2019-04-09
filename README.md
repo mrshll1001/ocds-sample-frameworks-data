@@ -156,7 +156,7 @@ Changes are also made in the `tender` block to add their reference to the list o
 }
 ```
 
-When a framework is finalised, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Supplier 1, Supplier 2, and Supplier 3 have been awarded a position onto the framework.
+When a supplier is awarded a place on the framework, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Supplier 1, Supplier 2, and Supplier 3 have been awarded a position onto the framework.
 
 > **Releasing an Award**
 > An release is made adding the parties to the parties array
@@ -221,7 +221,7 @@ When a framework is finalised, a release is made for the `award` award stage lik
 }
 ```
 
-An `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. For brevity, this sample shows a single award adding multiple suppliers onto the framework. Publishers seeking extra granularity may publish individual awards for each supplier's place on the contract:
+An `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. Frameworks list all suppliers on a single award notice, with the `value` representing the total possible value of the framework and covering all suppliers with a place on it.
 > **Award block**
 > The award block is included in the release. It includes OrganizationReferences to the suppliers in the `suppliers` array and details of the award.
 ```json
