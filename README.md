@@ -21,7 +21,7 @@ These should be declared appropriately in the package metadata:
 ```
 
 ## Framework agreement within a single publisher
-The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) and  will be used for multiple types of call-off; Direct Call-off and Mini-Competition. for the subsequent call-offs and mini-competitions. Please note that in OCDS buyer and procuring entity may be different at times.
+The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) since it will be used for Multiple Suppliers with both Direct Call-offs and a Mini-Competition. Please note that in OCDS buyer and procuring entity may be different at times.
 
 In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
@@ -38,6 +38,8 @@ Full examples:
 + [008_framework_award.json](/single_publisher/008_framework_award.json)
 
 The framework is established by first publishing a tender release opening up the procurement process as any normal contracting process published under OCDS.
+> **Release Metadata**
+> The tender release has the following metadata
 ```json
 {
   "ocid": "ocds-r6ebe6-example_framework",
@@ -45,12 +47,12 @@ The framework is established by first publishing a tender release opening up the
   "date": "2019-01-01T00:00:00Z",
   "tag": ["tender"],
   "initiationType": "tender"
-
-
 }
 ```
 
-Glasgow City is the one Establishing the framework, so they have an entry in the `parties` array:
+Glasgow City is the one establishing the framework, so they have an entry in the `parties` array:
+> **Parties Array**
+> The release has the following entries in the `parties` array at this time
 ```json
 {
   "parties": [
@@ -70,6 +72,9 @@ Glasgow City is the one Establishing the framework, so they have an entry in the
 ```
 
 The `tender` block is populated normally, with information about the framework tender. Glasgow City is the procuring entity so they are referenced in `procuringEntity`.
+
+> **Tender Block**
+> The tender release has a populated `tender` block with the following information
 ```json
 {
   "tender": {
@@ -91,46 +96,8 @@ The `tender` block is populated normally, with information about the framework t
 ```
 
 When someone bids for a position on the framework, they are added to the `parties` array with a role of *"tenderer"* since they have not yet been awarded the position.
-
-```json
-{
-  "parties": [
-    {
-      "name": "Supplier 1",
-      "id": "GB-COH-00000001-supplier_57",
-      "identifer": {
-        "scheme": "GB-COH",
-        "id": "00000001"
-      },
-      "roles": [
-        "tenderer"
-      ]
-    }
-  ]
-}
-```
-
-As well as this, in the `tender` block changes are made to add their reference to the list of tenderers, and update the total number of tenderers:
-
-```json
-{
-
-  "numberOfTenderers": "1",
-  "tenderers": [
-    {
-      "name": "Supplier 1",
-      "id": "GB-COH-00000001-supplier_57"
-    }
-  ]
-}
-
-
-
-}
-```
-
-A release may be made every time a tenderer places a bid, or a single release may be published to add all tenderers to the data at once. More granularity is better, however, as some data users may be interested to know when individual tenderers enter the procurement process:
-
+> **Parties Array**
+> Each tenderer's details are added to the `parties` array.
 ```json
 {
   "numberOfTenderers": "6",
@@ -162,8 +129,32 @@ A release may be made every time a tenderer places a bid, or a single release ma
   ]
 }
 ```
+
+Changes are also made in the `tender` block to add their reference to the list of tenderers, and update the total number of tenderers:
+
+> **numberOfTenderers and Tenderers**
+> numberOfTenderers and Tenderers are updated appropriately with the OrganizationReference
+```json
+{
+
+  "numberOfTenderers": "1",
+  "tenderers": [
+    {
+      "name": "Supplier 1",
+      "id": "GB-COH-00000001-supplier_57"
+    }
+  ]
+}
+
+
+
+}
+```
+
 When a framework is finalised, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Supplier 1, Supplier 2, and Supplier 3 have been awarded a position onto the framework.
 
+> **Releasing an Award**
+> An release is made adding the parties to the parties array
 ```json
 {
   "ocid": "ocds-r6ebe6-example_framework",
@@ -226,7 +217,8 @@ When a framework is finalised, a release is made for the `award` award stage lik
 ```
 
 An `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. For brevity, this sample shows a single award adding multiple suppliers onto the framework. Publishers seeking extra granularity may publish individual awards for each supplier's place on the contract:
-
+> **Award block**
+> The award block is included in the release. It includes OrganizationReferences to the suppliers in the `suppliers` array and details of the award.
 ```json
 
   "awards": [
@@ -272,7 +264,8 @@ Full examples:
 A Direct Call-Off from a Framework Agreement occurs when goods or services are procured directly from a supplier on an existing Framework Agreement without any further tendering process. For example a Framework may be established to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
 
 Following the previous Framework Agreement, Glasgow now make a Direct Call-Off to Supplier 1. A release is made with the appropriate release information:
-
+> **Release metadata**
+> The release for the Direct Call-Off has the following metadata.
 ```json
 {
   "ocid": "ocds-r6ebe6-example_framework",
@@ -284,7 +277,8 @@ Following the previous Framework Agreement, Glasgow now make a Direct Call-Off t
 }
 ```
 The `contracts` array is then added to with the details of the contract, including the supplier and buyer information:
-
+> **Contracts Block**
+> The release for the Direct Call-Off has the following information in the cotnracts block.
 ```json
 {
   "contracts": [
@@ -309,7 +303,8 @@ The `contracts` array is then added to with the details of the contract, includi
 ```
 
 Glasgow City is now a buyer, so their entry in the `parties` array is updated with the role of `"buyer"`:
-
+> **Parties Array**
+> The parties array in the release is updated with this information.
 ```json
 {
   "parties": [
@@ -347,6 +342,8 @@ Representing a Mini-Competition in OCDS is straightforward. Broadly:
 
 Following the previous sample of the Glasgow City Framework Agreement; after making their Direct Call-Offs Glasgow City hold a Mini-Competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original Framework Agreement:
 
+> **Release Metadata**
+> A release for a new contracting process is begun with the following details.
 ```json
 {
   "ocid": "ocds-r6ebe6-example_framework-competition-01",
@@ -388,7 +385,8 @@ Following the previous sample of the Glasgow City Framework Agreement; after mak
 }
 ```
 Since this is a `tender` release the `tender` block contains information about the tender opportunity. The `procurementMethod` is set to `selective` to indicate that this is not an open tender.
-
+> **Tender Block**
+> The new contracting process' tender block contains the following information.
 ```json
 "tender": {
   "id": "ocds-r6ebe6-example_framework-tender",
@@ -423,7 +421,8 @@ Full Examples:
 + [014_two_publishers_framework_award.json](/multi_publisher/014_two_publishers_framework_award.json)
 
 The first stages of the Framework Agreement are very similar to that when it only concerns a single publisher. In this sample, Crown Commercial Services commissions a Framework Agreement:
-
+> **Release Metadata**
+> The tender release has the following metadata.
 ```json
 {
   "ocid": "ocds-b5fd17-second_example_framework",
@@ -449,7 +448,8 @@ The first stages of the Framework Agreement are very similar to that when it onl
 }
 ```
 They are the procuring entity of the framework so they are referenced under `tender/procuringEntity`:
-
+> **Tender Block**
+> The tender release has the following information in the `tender` block
 ```json
 {
   "tender": {
@@ -469,6 +469,9 @@ They are the procuring entity of the framework so they are referenced under `ten
 }
 ```
 Bidders are added to the framework as per the previous example. For brevity this has been condensed to a single release:
+
+> **Updates to the release**
+> The tender release is updated to add bidders to the framework.
 ```json
 {
   "ocid": "ocds-b5fd17-second_example_framework",
@@ -538,7 +541,8 @@ Bidders are added to the framework as per the previous example. For brevity this
 }
 ```
 Remember to update the relevant fields in the `tender` block:
-
+> **The Tender Block**
+> The tender block is updated in the release to update the number of tenderers and reference them in the `tenderers` array.
 ```json
 {
   "numberOfTenderers": "4",
@@ -565,6 +569,9 @@ Remember to update the relevant fields in the `tender` block:
 
 Next the Framework Agreement is finalised. Supplier 1, Supplier 2, and Supplier 3 have made it into the framework. Poor Supplier 4 was the only one excluded:
 > Remember to update the entries under `release/parties` as well!
+
+> **Awards**
+> The awards release has the following information in `awards`.
 ```json
 {
   "awards": [
@@ -611,6 +618,8 @@ Full Examples:
 With the Framework Agreement in place and published by *Crown Commercial Services*, it becomes straightforward to represent Direct Call-offs made by another publisher.
 
 A Direct Call-Off is represented by a `contract` block; so an OCDS release is published by *Scottish Government* containing the details of the Call-Off. Since it is published by *Scottish Government*, they use their registered prefix for the release id:
+> **Release metadata**
+> The Direct Call-off has the following metadata.
  ```json
  {
    "ocid": "ocds-b5fd17-second_example_framework",
@@ -623,6 +632,9 @@ A Direct Call-Off is represented by a `contract` block; so an OCDS release is pu
  ```
 
  The buyer is also added to the `parties` array with the appropriate role, in this case *East Ayrshire*:
+
+> **Parties Array**
+> The contract release representing the Direct Call-Off has the following update to the `parties` array.
  ```json
 {
   "parties": [
@@ -643,6 +655,8 @@ A Direct Call-Off is represented by a `contract` block; so an OCDS release is pu
  ```
 
  As before the contract section refers back to the `awardID` of the Framework Agreement published by *Crown Commercial Services*. This will require access to the Award ID and the OCID of the Framework Agreement:
+ > **Contracts References**
+ > The contracts section refers back to the id of the award in `awardID`
 ```json
 {
   "contracts": [
@@ -654,6 +668,8 @@ A Direct Call-Off is represented by a `contract` block; so an OCDS release is pu
 }
 ```
 Remember to include the `buyer` and `suppliers` in this section, added by the extensions used:
+> **Buyer and Supplier In Contracts**
+> The contract section has the following information stored in `buyer` and `suppliers`.
 ```json
 {
   "buyer": {
@@ -676,7 +692,8 @@ Full Example:
 It is even more straightforward to run a mini-competition calling off of the framework. Since this is a new contracting process, a reference to the original Framework OCID should be included and the contracting process should proceed as a normal process under OCDS.
 
 In this example, Edinburgh are running a mini-competition on the Framework Agreement established previously by *Crown Commercial Services*:
-
+> **Tender Release Metadata**
+> The tender release has the following data; note the entry in the `relatedProcesses` array.
 ```json
 {
   "ocid": "ocds-r6ebe6-minicompetiion_from_other_publisher_framework",
