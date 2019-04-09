@@ -100,7 +100,7 @@ The `tender` block is populated normally, with information about the framework t
 
 ```
 
-When someone bids for a position on the framework, they are added to the `parties` array with a role of *"tenderer"* since they have not yet been awarded the position.
+When a potential supplier bids for a position on the framework, they are added to the `parties` array with a role of *"tenderer"* since they have not yet been awarded the position.
 > **Parties Array**
 > Each tenderer's details are added to the `parties` array.
 ```json

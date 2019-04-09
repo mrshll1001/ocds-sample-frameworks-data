@@ -1,0 +1,114 @@
+{
+"name": "Crown Commercial Services",
+"id": "GB-GOR-EA1015",
+"identifer": {
+  "scheme": "GB-GOR",
+  "id": "EA1015"
+},
+"roles": [ "procuringEntity" ]
+
+}
+
+
+{
+"name": "Glasgow City",
+"id": "GB-LAS-GLG",
+"identifer": {
+  "scheme": "GB-LAS",
+  "id": "GLG"
+},
+"roles": [ "buyer", "procuringEntity" ]
+
+}
+
+{
+"name": "East Ayrshire",
+"id": "GB-LAS-EAY",
+"identifer": {
+  "scheme": "GB-LAS",
+  "id": "EAY"
+},
+"roles": [ "buyer", "procuringEntity" ]
+
+}
+
+{
+"name": "Edinburgh",
+"id": "GB-LAS-EDH",
+"identifer": {
+  "scheme": "GB-LAS",
+  "id": "EDH"
+},
+"roles": [ "buyer", "procuringEntity" ]
+
+}
+
+{
+"name": "Sign Corp",
+"id": "GB-COH-48819977",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "48819977"
+},
+"roles": [ "tenderer" ]
+
+}
+
+
+{
+"name": "Valkyrie Navigations",
+"id": "GB-COH-84281009",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "84281009"
+},
+"roles": [ "tenderer" ]
+
+}
+
+
+{
+"name": "Seway Intelligence",
+"id": "GB-COH-54183153",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "54183153"
+},
+"roles": [ "tenderer" ]
+
+}
+
+{
+"name": "Moonlimited",
+"id": "GB-COH-51225583",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "51225583"
+},
+"roles": [ "tenderer" ]
+
+}
+
+
+{
+"name": "Aces Corp",
+"id": "GB-COH-41896446",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "41896446"
+},
+"roles": [ "tenderer" ]
+
+}
+
+
+{
+"name": "Nimblepoint",
+"id": "GB-COH-09610615",
+"identifer": {
+  "scheme": "GB-COH",
+  "id": "09610615"
+},
+"roles": [ "tenderer" ]
+
+}
