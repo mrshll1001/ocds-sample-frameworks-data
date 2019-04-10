@@ -62,10 +62,6 @@
       "awardID": "ocds-r6ebe6-example_framework-award-01",
       "title": "The First Direct Call-Off",
       "description": "A direct call off to buy things from Supplier 1 ",
-      "buyer": {
-        "name": "Glasgow City",
-        "id": "GB-LAS-GLG"
-      },
       "suppliers": [
         {
           "name": "Supplier 1",

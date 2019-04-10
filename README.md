@@ -44,7 +44,7 @@ The framework is established by first publishing a tender release opening up the
 }
 ```
 
-Glasgow City is the one establishing the framework, so they have an entry in the `parties` array:
+Glasgow City is the one establishing the framework, so they have an entry in the `parties` array. They have the roles of `buyer` and `procuringEntity` as they are the ones procuring and calling-off from the framework agreemen:
 > **Parties Array**
 > The release has the following entries in the `parties` array at this time
 ```json
@@ -262,7 +262,7 @@ Full examples:
 
 A direct call-off from a framework agreement occurs when goods or services are procured directly from a supplier on an existing framework agreement without any further competition. For example a Framework may be established to supply an office with stationery and a direct call-off may be made to purchase items from this.
 
-Following the previous framework agreement, Glasgow now make a direct call-off to Supplier 1. A release is made with the appropriate release information:
+Following the establishment of the framework agreement, Glasgow now make a direct call-off to Supplier 1. A release is made with the appropriate release metadata:
 > **Release metadata**
 > The release for the direct call-off has the following metadata.
 ```json
@@ -275,9 +275,9 @@ Following the previous framework agreement, Glasgow now make a direct call-off t
   ]
 }
 ```
-The `contracts` array is then added to with the details of the contract, including the supplier and buyer information:
+An item is added to the contracts array with the details of the call-off, including the supplier and buyer information:
 > **Contracts Block**
-> The release for the direct call-off has the following information in the cotnracts block.
+> The release for the direct call-off has the following information in the contracts block. This framework only has a single buyer, so the `buyer` information does not need to be provided under `contracts/buyer`. Here, the Contracts Suppliers extension provides the `contracts/suppliers` array.
 ```json
 {
   "contracts": [
@@ -286,37 +286,11 @@ The `contracts` array is then added to with the details of the contract, includi
       "awardID": "ocds-r6ebe6-example_framework-award-01",
       "title": "The First direct call-Off",
       "description": "A direct call off to buy things from Supplier 1 ",
-      "buyer": {
-        "name": "Glasgow City",
-        "id": "GB-LAS-GLG"
-      },
       "suppliers": [
         {
           "name": "Supplier 1",
           "id": "GB-COH-00000001-supplier_57"
         }
-      ]
-    }
-  ]
-}
-```
-
-Glasgow City is now a buyer, so their entry in the `parties` array is updated with the role of `"buyer"`:
-> **Parties Array**
-> The parties array in the release is updated with this information.
-```json
-{
-  "parties": [
-    {
-      "name": "Glasgow City",
-      "id": "GB-LAS-GLG",
-      "identifer": {
-        "scheme": "GB-LAS",
-        "id": "GLG"
-      },
-      "roles": [
-        "buyer",
-        "procuringEntity"
       ]
     }
   ]
