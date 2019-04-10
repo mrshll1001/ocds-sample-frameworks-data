@@ -297,16 +297,18 @@ An item is added to the contracts array with the details of the call-off, includ
 }
 ```
 
-This is repeated for subsequent direct call-offs.
+For each subsequent call-off a new item is added to the contracts array and a release is published.
 
 ### Running a mini-competition (`relatedProcess`)
 Full Example:
 + [011_mini-competition_tender.json](/single_publisher/011_mini-competition_tender.json)
 
 
-Another form of calling off from a framework agreement is the *Mini-Competition*. In this form of purchase from the framework, a separate tendering process is run with participants limited to those already accepted as suppliers.
+Call-offs from a framework agreement can also be made via a mini-competition, where more than one supplier on the framework is invited to submit a bid to provide specific goods, works or services to a buyer.
 
-Representing a mini-competition in OCDS is straightforward. Broadly:
+Mini-competitions are represented in OCDS using a separate contracting process, linked to the establishment of the framework, because they involve a further competitive stage.
+
+This is achieved through the following steps:
 + A *new contracting process* with a *new OCID* is created to represent the Mini Competition
 + In the new process the `relatedProcesses` array contains an entry referencing the OCID of the existing framework agreement
 + In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender.
