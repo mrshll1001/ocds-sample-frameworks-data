@@ -15,44 +15,40 @@
         "id": "GLG"
       },
       "roles": [
-        "buyer",
         "procuringEntity"
       ]
     },
     {
-      "name": "Supplier 1",
-      "id": "GB-COH-00000001-supplier_57",
+      "name": "Gamma Corp",
+      "id": "GB-COH-11111111",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000001"
+        "id": "11111111"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
-      "name": "Supplier 2",
-      "id": "GB-COH-00000001-supplier_58",
+      "name": "Valkyrie Navigations",
+      "id": "GB-COH-22222222",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000002"
+        "id": "22222222"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
-      "name": "Supplier 3",
-      "id": "GB-COH-00000001-supplier_59",
+      "name": "Seaway Intelligence",
+      "id": "GB-COH-33333333",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000003"
+        "id": "33333333"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     }
   ],
@@ -61,7 +57,7 @@
       "id": "ocds-r6ebe6-example_framework-contract-01",
       "awardID": "ocds-r6ebe6-example_framework-award-01",
       "title": "The First Direct Call-Off",
-      "description": "A direct call off to buy things from Supplier 1 ",
+      "description": "A direct call off to buy things from Supplier 1",
       "suppliers": [
         {
           "name": "Supplier 1",
