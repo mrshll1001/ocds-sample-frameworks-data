@@ -1,9 +1,9 @@
 # Sample OCDS data for framework call-offs
 
-This repository contains sample data for how the various [stages of a framework agreement](http://standard.open-contracting.org/latest/en/implementation/related_processes) may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and Mini-Competitions in Framework Agreements, as well as Dynamic Purchasing Systems.
+This repository contains sample data for how the various [stages of a framework agreement](http://standard.open-contracting.org/latest/en/implementation/related_processes) may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and mini-competitions in framework agreements, as well as Dynamic Purchasing Systems (DPS).
 
 ## Required extensions
-Framework Agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
+Framework agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
 
 + [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each Direct Call-Off to be associated with the purchase.
 + [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) adds a `suppliers` array to the `Contract` block; allowing the supplier for each Direct Call-Off to be associated with the purchase.
@@ -21,7 +21,7 @@ These should be declared appropriately in the package metadata:
 ```
 
 ## Framework agreement within a single publisher
-The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) since it will be used for Multiple Suppliers with both Direct Call-offs and a Mini-Competition. Please note that in OCDS buyer and procuring entity may be different at times.
+The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) since it will be used for Multiple Suppliers with both Direct Call-offs and a mini-competition. Please note that in OCDS buyer and procuring entity may be different at times.
 
 In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
@@ -332,14 +332,14 @@ Full Example:
 
 Another form of calling off from a framework agreement is the *Mini Competition*. In this form of purchase from the framework, a separate tendering process is run with participants limited to those already accepted as suppliers.
 
-Representing a Mini-Competition in OCDS is straightforward. Broadly:
+Representing a mini-competition in OCDS is straightforward. Broadly:
 + A *new contracting process* with a *new OCID* is created to represent the Mini Competition
 + In the new process the `relatedProcesses` array contains an entry referencing the OCID of the existing framework agreement
 + In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender.
 
-> Note: This is a new contracting process where the buyer is known and the suppliers will be determined by the award block. Therefore the schema changes made by [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) and [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) that apply to the Contract block may not be necessary for Mini-Competitions.
+> Note: This is a new contracting process where the buyer is known and the suppliers will be determined by the award block. Therefore the schema changes made by [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) and [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) that apply to the Contract block may not be necessary for mini-competitions.
 
-Following the previous sample of the Glasgow City framework agreement; after making their Direct Call-Offs Glasgow City hold a Mini-Competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original framework agreement:
+Following the previous sample of the Glasgow City framework agreement; after making their Direct Call-Offs Glasgow City hold a mini-competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original framework agreement:
 
 > **Release Metadata**
 > A release for a new contracting process is begun with the following details.
@@ -404,7 +404,7 @@ Since this is a `tender` release the `tender` block contains information about t
 
 }
 ```
-From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the Mini-Competition.
+From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the mini-competition.
 
 ## Framework agreement across multiple publishers
 Framework agreements may sometimes span data published by two or more different publishers. For example a framework agreement established and published by the UK National Government may be called off by buyers that are published by the Scottish Government or a regional publisher.
