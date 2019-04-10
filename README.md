@@ -2,8 +2,13 @@
 
 This repository contains sample data for how the various [stages of a framework agreement](http://standard.open-contracting.org/latest/en/implementation/related_processes) may appear in OCDS data. OCDS currently provides support for direct call-offs and mini-competitions in framework agreements, as well as Dynamic Purchasing Systems (DPS).
 
+This example will address the following scenarios:
+1. A framework agreement established for a *single buyer*, published by *a single publisher*.
+2. A framework agreement established for *multiple buyers*, published by *a single publisher*
+3. A framework agreement where the OCDS data is published by *multiple publishers*. This may occur when one publisher establishes a framework agreement, and then other publishers release OCDS data representing the call-offs from this. 
+
 ## Required extensions
-Framework agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
+Framework agreements may represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
 
 + [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each direct call-off to be associated with the purchase.
 + [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) adds a `suppliers` array to the `Contract` block; allowing the supplier for each direct call-off to be associated with the purchase.
