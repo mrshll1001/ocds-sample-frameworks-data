@@ -12,8 +12,7 @@ This example will address the following scenarios:
 
 1. A framework agreement established for a *single buyer*, published by *a single
 publisher*.
-2. A framework agreement established for *multiple buyers*,
-   published by *a single publisher*.
+2. A framework agreement established for *multiple buyers*, published by *a single publisher*.
 3. A framework agreement where the OCDS data is published by *multiple publishers*.
    This may occur when one publisher establishes a framework agreement, and then other publishers release OCDS data representing the call-offs from this.
 
