@@ -1,12 +1,12 @@
 # Sample OCDS data for framework call-offs
 
-This repository contains sample data for how the various [stages of a framework agreement](http://standard.open-contracting.org/latest/en/implementation/related_processes) may appear in OCDS data. OCDS currently provides support for Direct Call-Offs and mini-competitions in framework agreements, as well as Dynamic Purchasing Systems (DPS).
+This repository contains sample data for how the various [stages of a framework agreement](http://standard.open-contracting.org/latest/en/implementation/related_processes) may appear in OCDS data. OCDS currently provides support for direct call-offs and mini-competitions in framework agreements, as well as Dynamic Purchasing Systems (DPS).
 
 ## Required extensions
 Framework agreements represent many-to-many relationships between a variety of Buyers and Suppliers. This has implications for the structure of the OCDS data as `buyer` is declared at release level and `suppliers` are listed in `award/suppliers`; whereas each call-off from a Framework Agreement might involve a different buyer procuring from a different supplier. There are two extensions available to publishers to allow them to publish accurate Framework data as valid OCDS:
 
-+ [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each Direct Call-Off to be associated with the purchase.
-+ [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) adds a `suppliers` array to the `Contract` block; allowing the supplier for each Direct Call-Off to be associated with the purchase.
++ [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) adds a `buyer` reference field to the `Contract` block; allowing the buyer for each direct call-off to be associated with the purchase.
++ [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) adds a `suppliers` array to the `Contract` block; allowing the supplier for each direct call-off to be associated with the purchase.
 
 These should be declared appropriately in the package metadata:
 
@@ -21,7 +21,7 @@ These should be declared appropriately in the package metadata:
 ```
 
 ## Framework agreement within a single publisher
-The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) since it will be used for Multiple Suppliers with both Direct Call-offs and a mini-competition. Please note that in OCDS buyer and procuring entity may be different at times.
+The following examples represent the creation of a framework by Glasgow City, who will be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) since it will be used for Multiple Suppliers with both direct call-offs and a mini-competition. Please note that in OCDS buyer and procuring entity may be different at times.
 
 In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
@@ -260,11 +260,11 @@ Full examples:
 + [009_first_direct_calloff.json](/single_publisher/009_first_direct_calloff.json)
 + [010_second_direct_calloff.json](/single_publisher/010_second_direct_calloff.json)
 
-A Direct Call-Off from a framework agreement occurs when goods or services are procured directly from a supplier on an existing framework agreement without any further competition. For example a Framework may be established to supply an office with stationery and a Direct Call-Off may be made to purchase items from this.
+A direct call-off from a framework agreement occurs when goods or services are procured directly from a supplier on an existing framework agreement without any further competition. For example a Framework may be established to supply an office with stationery and a direct call-off may be made to purchase items from this.
 
-Following the previous framework agreement, Glasgow now make a Direct Call-Off to Supplier 1. A release is made with the appropriate release information:
+Following the previous framework agreement, Glasgow now make a direct call-off to Supplier 1. A release is made with the appropriate release information:
 > **Release metadata**
-> The release for the Direct Call-Off has the following metadata.
+> The release for the direct call-off has the following metadata.
 ```json
 {
   "ocid": "ocds-r6ebe6-example_framework",
@@ -277,14 +277,14 @@ Following the previous framework agreement, Glasgow now make a Direct Call-Off t
 ```
 The `contracts` array is then added to with the details of the contract, including the supplier and buyer information:
 > **Contracts Block**
-> The release for the Direct Call-Off has the following information in the cotnracts block.
+> The release for the direct call-off has the following information in the cotnracts block.
 ```json
 {
   "contracts": [
     {
       "id": "ocds-r6ebe6-example_framework-contract-01",
       "awardID": "ocds-r6ebe6-example_framework-award-01",
-      "title": "The First Direct Call-Off",
+      "title": "The First direct call-Off",
       "description": "A direct call off to buy things from Supplier 1 ",
       "buyer": {
         "name": "Glasgow City",
@@ -323,14 +323,14 @@ Glasgow City is now a buyer, so their entry in the `parties` array is updated wi
 }
 ```
 
-This is repeated for subsequent Direct Call-Offs.
+This is repeated for subsequent direct call-offs.
 
 ### Running a mini-competition (`relatedProcess`)
 Full Example:
 + [011_mini-competition_tender.json](/single_publisher/011_mini-competition_tender.json)
 
 
-Another form of calling off from a framework agreement is the *Mini Competition*. In this form of purchase from the framework, a separate tendering process is run with participants limited to those already accepted as suppliers.
+Another form of calling off from a framework agreement is the *Mini-Competition*. In this form of purchase from the framework, a separate tendering process is run with participants limited to those already accepted as suppliers.
 
 Representing a mini-competition in OCDS is straightforward. Broadly:
 + A *new contracting process* with a *new OCID* is created to represent the Mini Competition
@@ -339,7 +339,7 @@ Representing a mini-competition in OCDS is straightforward. Broadly:
 
 > Note: This is a new contracting process where the buyer is known and the suppliers will be determined by the award block. Therefore the schema changes made by [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) and [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) that apply to the Contract block may not be necessary for mini-competitions.
 
-Following the previous sample of the Glasgow City framework agreement; after making their Direct Call-Offs Glasgow City hold a mini-competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original framework agreement:
+Following the previous sample of the Glasgow City framework agreement; after making their direct call-offs Glasgow City hold a mini-competition between suppliers on the framework. A new contracting process is created with an entry in `relatedProcesses` referencing the original framework agreement:
 
 > **Release Metadata**
 > A release for a new contracting process is begun with the following details.
@@ -614,11 +614,11 @@ Full Examples:
 + [015_two_publishers_framework_first_direct-calloff.json](/multi_publisher/015_two_publishers_framework_first_direct-calloff.json)
 + [016_two_publishers_framework_second_direct-calloff.json](/multi_publisher/016_two_publishers_framework_second_direct-calloff.json)
 
-With the framework agreement in place and published by *Crown Commercial Services*, it becomes straightforward to represent Direct Call-offs made by another publisher.
+With the framework agreement in place and published by *Crown Commercial Services*, it becomes straightforward to represent direct call-offs made by another publisher.
 
-A Direct Call-Off is represented by a `contract` block; so an OCDS release is published by *Scottish Government* containing the details of the Call-Off. Since it is published by *Scottish Government*, they use their registered prefix for the release id:
+A direct call-off is represented by a `contract` block; so an OCDS release is published by *Scottish Government* containing the details of the Call-Off. Since it is published by *Scottish Government*, they use their registered prefix for the release id:
 > **Release metadata**
-> The Direct Call-off has the following metadata.
+> The direct call-off has the following metadata.
  ```json
  {
    "ocid": "ocds-b5fd17-second_example_framework",
@@ -633,7 +633,7 @@ A Direct Call-Off is represented by a `contract` block; so an OCDS release is pu
  The buyer is also added to the `parties` array with the appropriate role, in this case *East Ayrshire*:
 
 > **Parties Array**
-> The contract release representing the Direct Call-Off has the following update to the `parties` array.
+> The contract release representing the direct call-off has the following update to the `parties` array.
  ```json
 {
   "parties": [
