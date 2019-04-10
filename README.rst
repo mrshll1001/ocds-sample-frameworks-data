@@ -50,12 +50,11 @@ These should be declared appropriately in the package metadata:
       "releases": []
     }
 
-Framework agreement within a single publisher
----------------------------------------------
+Framework agreement for a single publisher with a single buyer
+--------------------------------------------------------------
 
 The following examples represent the creation of a framework by Glasgow
-City, who will be acting as the buyer and procuring entity. It also
-spans multiple `framework
+City for its own use. Glasgow will therefore be acting as the buyer and procuring entity. It also spans multiple `framework
 types <http://standard.open-contracting.org/latest/en/implementation/related_processes/>`__
 since it will be used for Multiple Suppliers with both direct call-offs
 and a mini-competition. Please note that in OCDS buyer and procuring
@@ -479,6 +478,20 @@ the following information.
 From this point the contracting process continues as normal, with the
 award and contract stages being released under the new OCID created for
 the mini-competition.
+
+Framework agreement for a single publisher with multiple buyers
+---------------------------------------------------------------
+
++ Reminder about extensions
+
+Establishing the framework agreement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Making direct call-offs
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Running a mini-competition
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Framework agreement across multiple publishers
 ----------------------------------------------
