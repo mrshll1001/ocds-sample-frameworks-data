@@ -383,7 +383,17 @@ Framework agreements may sometimes span data published by two or more different 
 
  There is very little difference in the OCDS representing a framework agreement handled by a single publisher, and a framework agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
 
-In the following samples, the framework agreement is published by *Crown Commercial Services* using their registered prefix of `ocds-b5fd17`. The purchases from the framework are made by entities published by *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
+ In the following samples, the framework agreement is published by *Crown Commercial Services* using their registered prefix of `ocds-b5fd17`. The purchases from the framework are made by entities published by *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
+
+### Considerations for integrating systems
+To publish accurate OCDS data spanning multiple publishers, considerations must be made to integrate the data across multiple systems.
+
+System integration should cover:
++ `ocid` - to link direct calls offs to framework establishments and to link mini-competitions to framework establishments
++ `award.id` - to link direct calls offs to framework establishments
++ `parties.id` - to keep consistent organisation identifiers between publishers
++ `contracts.id` - to avoid clashing contract ids for direct call-offs
+
 
 ### Publisher 1 sets up the framework (Tender and Award)
 The first stages of the framework agreement are very similar to that when it only concerns a single publisher. In this sample, Crown Commercial Services establishes a framework agreement:
