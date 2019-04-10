@@ -1,0 +1,65 @@
+{
+  "ocid": "ocds-r6ebe6-example_framework-competition-01",
+  "id": "ocds-r6ebe6-example_framework-competition-01-tender-2019-05-01T00:00:00Z",
+  "date": "2019-05-01T00:00:00Z",
+  "tag": [
+    "tender"
+  ],
+  "initiationType": "tender",
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
+  "parties": [
+    {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer",
+        "procuringEntity"
+      ]
+    }
+  ],
+  "relatedProcesses": [
+    {
+      "id": "ocds-r6ebe6-example_framework-parent",
+      "relationship": "framework",
+      "title": "An Example Framework",
+      "scheme": "ocid",
+      "identifer": "ocds-r6ebe6-example_framework",
+      "uri": "https://example.org/records/ocds-r6ebe6-example_framework"
+    }
+  ],
+  "tender": {
+    "id": "ocds-r6ebe6-example_framework-tender",
+    "title": "An Example Mini Competition",
+    "description": "A mini competition run off of the original framework",
+    "status": "active",
+    "procurementMethod": "selective",
+    "procuringEntity": {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG"
+    },
+    "value": {
+      "amount": "2000",
+      "currency": "GBP"
+    },
+    "tenderPeriod": {
+      "startDate": "2019-05-01",
+      "endDate": "2019-05-31"
+    },
+    "awardPeriod": {
+      "endDate": "2019-06-01"
+    },
+    "contractPeriod": {
+      "startDate": "2019-06-01",
+      "endDate": "2020-01-31"
+    },
+    "numberOfTenderers": "0",
+    "tenderers": []
+  }
+}
