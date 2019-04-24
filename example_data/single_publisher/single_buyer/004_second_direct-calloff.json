@@ -61,11 +61,7 @@
       "id": "ocds-r6ebe6-example_framework-contract-02",
       "awardID": "ocds-r6ebe6-example_framework-award-01",
       "title": "The Second Direct Call-Off ",
-      "description": "A direct call off to buy things from Supplier 2.",
-      "buyer": {
-        "name": "Glasgow City",
-        "id": "GB-LAS-GLG"
-      },
+      "description": "A direct call off to buy things from Valkyrie Navigations.",
       "status": "active",
       "period": {
         "startDate": "2019-03-20T00:00:00Z",
@@ -78,8 +74,8 @@
       "dateSigned": "2019-03-20T00:00:00Z",
       "suppliers": [
         {
-          "name": "Supplier 2",
-          "id": "GB-COH-00000002-supplier_58"
+          "name": "Valkyrie Navigations",
+          "id": "GB-COH-22222222"
         }
       ]
     }

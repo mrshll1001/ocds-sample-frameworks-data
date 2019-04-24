@@ -6,6 +6,10 @@
     "contract"
   ],
   "initiationType": "tender",
+  "buyer": {
+    "name": "Glasgow City",
+    "id": "GB-LAS-GLG"
+  },
   "parties": [
     {
       "name": "Glasgow City",
@@ -60,8 +64,8 @@
       "description": "A direct call off to buy things from Supplier 1",
       "suppliers": [
         {
-          "name": "Supplier 1",
-          "id": "GB-COH-00000001-supplier_57"
+          "name": "Gamma Corp",
+          "id": "GB-COH-11111111"
         }
       ],
       "status": "active",

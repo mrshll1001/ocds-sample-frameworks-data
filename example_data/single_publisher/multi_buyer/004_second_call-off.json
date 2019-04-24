@@ -1,0 +1,105 @@
+{
+  "ocid": "ocds-r6ebe6-multi_buyer_example_framework",
+  "id": "ocds-r6ebe6-multi_buyer_example_framework-contract-2019-03-20T00:00:00Z",
+  "date": "2019-03-20T00:00:00Z",
+  "tag": [
+    "contract"
+  ],
+  "initiationType": "tender",
+  "parties": [
+    {
+      "name": "Scottish Government",
+      "id": "GB-GOR-DA1020",
+      "identifer": {
+        "scheme": "GB-GOR",
+        "id": "DA1020"
+      },
+      "roles": [
+        "procuringEntity"
+      ]
+    },
+    {
+      "name": "Gamma Corp",
+      "id": "GB-COH-11111111",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "11111111"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Valkyrie Navigations",
+      "id": "GB-COH-22222222",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "22222222"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Seaway Intelligence",
+      "id": "GB-COH-33333333",
+      "identifer": {
+        "scheme": "GB-COH",
+        "id": "33333333"
+      },
+      "roles": [
+        "tenderer"
+      ]
+    },
+    {
+      "name": "Edinburgh",
+      "id": "GB-LAS-EDH",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "EDH"
+      },
+      "roles": [
+        "buyer"
+      ]
+    },
+    {
+      "name": "Glasgow City",
+      "id": "GB-LAS-GLG",
+      "identifer": {
+        "scheme": "GB-LAS",
+        "id": "GLG"
+      },
+      "roles": [
+        "buyer"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "id": "ocds-r6ebe6-multi_buyer_example_framework-contract-02",
+      "awardID": "ocds-r6ebe6-multi_buyer_example_framework-award-01",
+      "title": "The Second Direct Call-Off ",
+      "description": "A direct call off to buy things from Valkyrie Navigations.",
+      "buyer": {
+        "name": "Glasgow City",
+        "id": "GB-LAS-GLG"
+      },
+      "status": "active",
+      "period": {
+        "startDate": "2019-03-20T00:00:00Z",
+        "endDate": "2019-03-20T00:00:00Z"
+      },
+      "value": {
+        "amount": 10000,
+        "currency": "GBP"
+      },
+      "dateSigned": "2019-03-20T00:00:00Z",
+      "suppliers": [
+        {
+          "name": "Valkyrie Navigations",
+          "id": "GB-COH-22222222"
+        }
+      ]
+    }
+  ]
+}
