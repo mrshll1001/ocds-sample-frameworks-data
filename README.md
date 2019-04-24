@@ -768,4 +768,3 @@ system at any time.
 -   Create a new award for each supplier awarded a space on the
     framework.
 -   Add them to the original award for the set-up of the framework.
-
