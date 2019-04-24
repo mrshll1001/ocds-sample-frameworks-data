@@ -56,7 +56,7 @@
     {
       "id": "ocds-r6ebe6-example_framework-award-01",
       "title": "Award of suppliers on the example framework",
-      "description": "Suppliers 1, 2, and 3 have been awarded a place on the framework",
+      "description": "Suppliers have been awarded a place on the framework",
       "status": "active",
       "date": "2019-02-01T00:00:00Z",
       "value": {
@@ -65,16 +65,16 @@
       },
       "suppliers": [
         {
-          "name": "Supplier 1",
-          "id": "GB-COH-00000001-supplier_57"
+          "name": "Gamma Corp",
+          "id": "GB-COH-11111111"
         },
         {
-          "name": "Supplier 2",
-          "id": "GB-COH-00000002-supplier_58"
+          "name": "Valkyrie Navigations",
+          "id": "GB-COH-22222222"
         },
         {
-          "name": "Supplier 3",
-          "id": "GB-COH-00000001-supplier_59"
+          "name": "Seaway Intelligence",
+          "id": "GB-COH-33333333"
         }
       ],
       "contractPeriod": {
