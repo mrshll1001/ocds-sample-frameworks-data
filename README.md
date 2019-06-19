@@ -57,7 +57,8 @@ The `tender` block is populated normally, with information about the framework t
 
 > **Tender Block**
 > The tender release has a populated `tender` block with the following information
-```
+
+```json
 sample 001_framework_tender
 ```
 
