@@ -257,7 +257,7 @@ A direct call-off is represented by a `contract` block; so an OCDS release is pu
 > The direct call-off has the following metadata.
 
 ```json
-{    "ocid": "ocds-b5fd17-second_example_framework",    "id": "ocds-r6ebe6-second_example_framework-contract-2019-04-20 T00:00:00Z",    "date": "2019-04-20T00:00:00Z",    "tag": [      "contract"    ]  }
+multi_publisher/003
 ```
 
 The buyer is also added to the `parties` array with the appropriate role, in this case *East Ayrshire*:
@@ -266,21 +266,7 @@ The buyer is also added to the `parties` array with the appropriate role, in thi
 > The contract release representing the direct call-off has the following update to the `parties` array.
 
  ```json
- {
- "parties": [
- {
- "name": "East Ayrshire",
- "id": "GB-LAS-EAY",
- "identifer": {
- "scheme": "GB-LAS",
- "id": "EAY"
- },
- "roles": [
- "buyer",
- ]
- }
- ]
- }
+ multi_publisher/003 (parties)
  ```
 
 As before the contract section refers back to the `awardID` of the framework agreement published by *Crown Commercial Services*. This will require access to the Award ID and the OCID of the framework agreement:
@@ -289,14 +275,7 @@ As before the contract section refers back to the `awardID` of the framework agr
 > The contracts section refers back to the id of the award in `awardID`
 
 ```json
-{
-  "contracts": [
-    {
-      "id": "ocds-r6ebe6-second_example_framework-contract-02",
-      "awardID": "ocds-b5fd17-second_example_framework-award"
-    }
-  ]
-}
+multi_publisher/003 (contracts.awardID)
 ```
 
 Remember to include the `buyer` and `suppliers` in this section, added by the extensions used:
@@ -304,18 +283,7 @@ Remember to include the `buyer` and `suppliers` in this section, added by the ex
 >  The contract section has the following information stored in `buyer` and `suppliers`. The ids used for each supplier will need to match between publisher systems -- following good practices around [organisation identifiers](http://standard.open-contracting.org/latest/en/schema/identifiers/#organization-ids) is recommended to assist in this.
 
 ```json
-{
-  "buyer": {
-    "name": "East Ayrshire",
-    "id": "GB-LAS-EAY"
-  },
-  "suppliers": [
-    {
-      "name": "Supplier 2",
-      "id": "GB-COH-00000001-supplier_58"
-    }
-  ],
-}
+multi_publisher/003 (contract.buyer contract.suppliers)
 ```
 
 Running a mini-competition using `relatedProcess`
