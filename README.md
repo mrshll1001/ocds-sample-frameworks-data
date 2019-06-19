@@ -37,7 +37,7 @@ It is common for a framework agreement to be established by a large party such a
 
 The following examples represent the creation of a framework agreement by the national-level Scottish Government for use by multiple local governments (called "Councils"). In this scenario, the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
-### Establishing the framework agreement - publishing the tender
+### Starting the process - publishing the tender
 The framework is established by first publishing a tender release opening up the procurement process as any normal contracting process published under OCDS.
 
 > **Release Metadata**
@@ -109,52 +109,20 @@ For each subsequent call-off this process is repeated with a new release publish
 
 Framework agreement for a single publisher with a single buyer
 --------------------------------------------------------------
+It is also possible for a buyer to establish a framework for its own use. An example of this may be where a local government establishes a framework containing local suppliers. From the OCDS perspective this looks similar, but not identical, to the previous scenario with multiple buyers. Notably there is only one buyer; so the [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) is not required. The [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) is still used because the direct call-offs from the framework will likely span several buyers.
 
-The following examples represent the creation of a framework by Glasgow City for its own use. Glasgow will therefore be acting as the buyer and procuring entity. It also spans multiple [framework types](http://standard.open-contracting.org/latest/en/implementation/related_processes/) since it will be used for Multiple Suppliers with both direct call-offs and a mini-competition. Please note that in OCDS buyer and procuring entity may be different at times.
 
-In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
+The following examples represent the creation of a framework by Glasgow City for its own use. Glasgow will therefore be acting as the buyer and procuring entity.In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
 
-### Establishing the framework (Tender and Award)
+### Starting the process - publishing the tender
+The same process is followed as before. The framework is put out to tender with a tender release in OCDS the same as any normal contracting process.
 
-The framework is established by first publishing a tender release opening up the procurement process as any normal contracting process published under OCDS.
+There is one key difference from the previous scenario in this step -- because the only party calling off from the framework will be Glasgow City they are referenced in the `release/buyer`
 
-> **Release Metadata**
-> The tender release has the following metadata
-
-```json
-{
-  "ocid": "ocds-r6ebe6-example_framework",
-  "id": "ocds-r6ebe6-example_framework-tender-2019-01-01T00:00:00Z",
-  "date": "2019-01-01T00:00:00Z",
-  "tag": ["tender"],
-  "initiationType": "tender"
-}
+> **Tender Release**
+> The tender release looks similar to the previous scenario, with the key difference of a `release/buyer` field.
 ```
-
-Glasgow City is the one establishing the framework, so they have an entry in the `parties` array. They have the roles of `buyer` and `procuringEntity` as they are the ones procuring and calling-off from the framework agreement:
-> **Parties Array**
-> The release has the following entries in the `parties` array at this time
-```json
-{
-  "parties": [
-    {
-      "name": "Glasgow City",
-      "id": "GB-LAS-GLG",
-      "identifer": {
-        "scheme": "GB-LAS",
-        "id": "GLG"
-      },
-      "roles": [
-        "buyer",
-        "procuringEntity"
-      ]
-    }
-  ],
-  "buyer": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  }
-}
+001_framework_tender.json
 ```
 
 The `tender` block is populated normally, with information about the framework tender. For frameworks, `tender/value` should represent the total estimated upper value of the framework. Glasgow City is the procuring entity so they are referenced in `procuringEntity`.
@@ -162,135 +130,32 @@ The `tender` block is populated normally, with information about the framework t
 > **Tender Block**
 > The tender release has a populated `tender` block with the following information
 
-```json
-{
-  "tender": {
-    "id": "ocds-r6ebe6-example_framework-tender",
-    "title": "An Example Framework",
-    "description": "An Example Framework",
-    "status": "active",
-    "procuringEntity": {
-      "name": "Glasgow City",
-      "id": "GB-LAS-GLG"
-    },
-    "value": {
-      "amount": "1000000",
-      "currency": "GBP"
-    }
-  }
-}
+```
+001_framework_tender.json
+```
+### Establishing the framework agreement - awarding suppliers a position on the framework
+
+When a supplier is awarded a place on the framework, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Gamma Corp, Valkyrie Navigations, and Seaway Intelligence have been awarded a position onto the framework.
+
+> **Releasing an Award**
+> An award release is made adding the parties to the parties array
+
+```
+002_framework_award
 ```
 
-
-When a supplier is awarded a place on the framework, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Supplier 1, Supplier 2, and Supplier 3 have been awarded a position onto the framework.
-
-> **Releasing an Award** An release is made adding the parties to the
-> parties array
-
-```json
-{
-  "ocid": "ocds-r6ebe6-example_framework",
-  "id": "ocds-r6ebe6-example_framework-award-2019-02-01T00:00:00Z",
-  "date": "2019-02-01T00:00:00Z",
-  "tag": [
-    "award"
-  ],
-  "initiationType": "tender",
-  "parties": [
-    {
-      "name": "Glasgow City",
-      "id": "GB-LAS-GLG",
-      "identifer": {
-        "scheme": "GB-LAS",
-        "id": "GLG"
-      },
-      "roles": [
-        "procuringEntity"
-      ]
-    },
-    {
-      "name": "Supplier 1",
-      "id": "GB-COH-00000001-supplier_57",
-      "identifer": {
-        "scheme": "GB-COH",
-        "id": "00000001"
-      },
-      "roles": [
-        "tenderer",
-        "supplier"
-      ]
-    },
-    {
-      "name": "Supplier 2",
-      "id": "GB-COH-00000001-supplier_58",
-      "identifer": {
-        "scheme": "GB-COH",
-        "id": "00000002"
-      },
-      "roles": [
-        "tenderer",
-        "supplier"
-      ]
-    },
-    {
-      "name": "Supplier 3",
-      "id": "GB-COH-00000001-supplier_59",
-      "identifer": {
-        "scheme": "GB-COH",
-        "id": "00000003"
-      },
-      "roles": [
-        "tenderer",
-        "supplier"
-      ]
-    }
-  ]
-}
-```
-
-An `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. Frameworks list all suppliers on a single award notice, with the `value` representing the total possible value of the framework and covering all suppliers with a place on it.
+Same as before, the `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. Remember to use a single award notice listing all suppliers. The `value` field should represent the total possible value of the framework.
 
 > **Award block**
 > The award block is included in the release. It includes OrganizationReferences to the suppliers in the `suppliers` array and details of the award.
 
-```json
-"awards": [
-  {
-    "id": "ocds-r6ebe6-example_framework-award-01",
-    "title": "Award of suppliers on the example framework",
-    "description": "Suppliers 1, 2, and 3 have been awarded a place on the framework",
-    "status": "active",
-    "date": "2019-02-01T00:00:00Z",
-    "value": {
-      "amount": 1000000,
-      "currency": "GBP"
-    },
-    "suppliers": [
-      {
-        "name": "Supplier 1",
-        "id": "GB-COH-00000001-supplier_57"
-      },
-      {
-        "name": "Supplier 2",
-        "id": "GB-COH-00000002-supplier_58"
-      },
-      {
-        "name": "Supplier 3",
-        "id": "GB-COH-00000001-supplier_59"
-      }
-    ],
-    "contractPeriod": {
-      "startDate": "2019-02-02",
-      "endDate": "2020-01-31"
-    }
-  }
-]
+```
+002_framework_award
 ```
 
 The framework is now established, and call-offs may now be made.
 
 ### Making direct call-offs (Contract)
-
 A direct call-off from a framework agreement occurs when goods or services are procured directly from a supplier on an existing framework agreement without any further competition. For example a framework may be established to supply an office with stationery and a direct call-off may be made to purchase items from this.
 
 Following the establishment of the framework agreement, Glasgow now make a direct call-off to Supplier 1. A release is made with the appropriate release metadata:
