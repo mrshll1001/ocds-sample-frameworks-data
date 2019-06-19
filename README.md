@@ -109,7 +109,6 @@ For each subsequent call-off this process is repeated with a new release publish
 
 Framework agreement across multiple publishers
 ----------------------------------------------
-
 Framework agreements may sometimes span data published by two or more different publishers. For example a framework agreement established and published by the UK National Government may be called off by buyers that are published by the Scottish Government or a regional publisher.
 
 There is very little difference in the OCDS representing a framework agreement handled by a single publisher, and a framework agreement with which multiple publishers interact. Since the OCID is globally unique it is used by both the publisher representing the framework setup and the publisher representing the call-offs from the framework.
