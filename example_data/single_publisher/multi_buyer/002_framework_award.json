@@ -19,7 +19,7 @@
       ]
     },
     {
-      "name": "Gamma Corp",
+      "name": "Gamma Stationery",
       "id": "GB-COH-11111111",
       "identifer": {
         "scheme": "GB-COH",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "name": "Valkyrie Navigations",
+      "name": "Valkyrie Office Supplies",
       "id": "GB-COH-22222222",
       "identifer": {
         "scheme": "GB-COH",
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "name": "Seaway Intelligence",
+      "name": "Seaway Envelopes and Stationery",
       "id": "GB-COH-33333333",
       "identifer": {
         "scheme": "GB-COH",
@@ -65,15 +65,15 @@
       },
       "suppliers": [
         {
-          "name": "Gamma Corp",
+          "name": "Gamma Stationery",
           "id": "GB-COH-11111111"
         },
         {
-          "name": "Valkyrie Navigations",
+          "name": "Valkyrie Office Supplies",
           "id": "GB-COH-22222222"
         },
         {
-          "name": "Seaway Intelligence",
+          "name": "Seaway Envelopes and Stationery",
           "id": "GB-COH-33333333"
         }
       ],
