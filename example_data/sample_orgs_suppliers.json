@@ -1,7 +1,7 @@
 {
   "orgs": [
     {
-      "name": "Gamma Corp",
+      "name": "Gamma Stationery",
       "id": "GB-COH-11111111",
       "identifer": {
         "scheme": "GB-COH",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "name": "Valkyrie Navigations",
+      "name": "Valkyrie Office Supplies",
       "id": "GB-COH-22222222",
       "identifer": {
         "scheme": "GB-COH",
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "name": "Seaway Intelligence",
+      "name": "Seaway Envelopes and Stationery",
       "id": "GB-COH-33333333",
       "identifer": {
         "scheme": "GB-COH",
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "name": "Moonlimited",
+      "name": "Moonlimited Paper Supplies",
       "id": "GB-COH-44444444",
       "identifer": {
         "scheme": "GB-COH",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "name": "Aces Corp",
+      "name": "Aces Equipment",
       "id": "GB-COH-55555555",
       "identifer": {
         "scheme": "GB-COH",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "name": "Nimblepoint",
+      "name": "Nimblepoint Office Equipment",
       "id": "GB-COH-66666666",
       "identifer": {
         "scheme": "GB-COH",
