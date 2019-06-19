@@ -56,8 +56,8 @@
     {
       "id": "ocds-r6ebe6-multi_buyer_example_framework-contract-01",
       "awardID": "ocds-r6ebe6-multi_buyer_example_framework-award-01",
-      "title": "The First Direct Call-Off",
-      "description": "A direct call-off procuring equipment from Gamma Corp",
+      "title": "Purchase of pens",
+      "description": "A direct-call off purchasing items from Gamma Stationery",
       "buyer": {
         "name": "Edinburgh",
         "id": "GB-LAS-EDH"
