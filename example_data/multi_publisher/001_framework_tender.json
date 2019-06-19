@@ -21,8 +21,8 @@
   ],
   "tender": {
     "id": "ocds-b5fd17-second_example_framework-tender",
-    "title": "An Example National Framework",
-    "description": "An Example National Framework",
+    "title": "Government Office Supplies Framework",
+    "description": "A framework to supply government offices with stationery and office supplies",
     "status": "active",
     "procuringEntity": {
       "name": "Crown Commercial Services",

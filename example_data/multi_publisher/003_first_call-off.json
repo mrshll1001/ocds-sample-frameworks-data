@@ -19,39 +19,36 @@
       ]
     },
     {
-      "name": "Supplier 1",
-      "id": "GB-COH-00000001-supplier_57",
+      "name": "Gamma Stationery",
+      "id": "GB-COH-11111111",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000001"
+        "id": "11111111"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
-      "name": "Supplier 2",
-      "id": "GB-COH-00000001-supplier_58",
+      "name": "Valkyrie Office Supplies",
+      "id": "GB-COH-22222222",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000002"
+        "id": "22222222"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
-      "name": "Supplier 3",
-      "id": "GB-COH-00000001-supplier_59",
+      "name": "Seaway Envelopes and Stationery",
+      "id": "GB-COH-33333333",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000003"
+        "id": "33333333"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
@@ -71,8 +68,8 @@
     {
       "id": "ocds-r6ebe6-second_example_framework-contract-01",
       "awardID": "ocds-b5fd17-second_example_framework-award",
-      "title": "The First Direct Call-Off ",
-      "description": "A direct call off to buy things from Supplier 1 ",
+      "title": "Purchase order of stationery",
+      "description": "A direct call off to buy things from Gamma Stationery ",
       "buyer": {
         "name": "Glasgow City",
         "id": "GB-LAS-GLG"
@@ -89,8 +86,8 @@
       "dateSigned": "2019-04-10T00:00:00Z",
       "suppliers": [
         {
-          "name": "Supplier 1",
-          "id": "GB-COH-00000001-supplier_57"
+          "name": "Gamma Stationery",
+          "id": "GB-COH-11111111"
         }
       ]
     }

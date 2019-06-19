@@ -19,39 +19,36 @@
       ]
     },
     {
-      "name": "Supplier 1",
-      "id": "GB-COH-00000001-supplier_57",
+      "name": "Gamma Stationery",
+      "id": "GB-COH-11111111",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000001"
+        "id": "11111111"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
-      "name": "Supplier 2",
-      "id": "GB-COH-00000001-supplier_58",
+      "name": "Valkyrie Office Supplies",
+      "id": "GB-COH-22222222",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000002"
+        "id": "22222222"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
-      "name": "Supplier 3",
-      "id": "GB-COH-00000001-supplier_59",
+      "name": "Seaway Envelopes and Stationery",
+      "id": "GB-COH-33333333",
       "identifer": {
         "scheme": "GB-COH",
-        "id": "00000003"
+        "id": "33333333"
       },
       "roles": [
-        "tenderer",
-        "supplier"
+        "tenderer"
       ]
     },
     {
@@ -71,16 +68,16 @@
     {
       "id": "ocds-r6ebe6-second_example_framework-contract-02",
       "awardID": "ocds-b5fd17-second_example_framework-award",
-      "title": "The Second Direct Call-Off ",
-      "description": "A direct call off to buy things from Supplier 2 ",
+      "title": "Purchase of manilla enveleops ",
+      "description": "A direct call off to buy items from Seaway Envelopes and Stationery",
       "buyer": {
         "name": "East Ayrshire",
         "id": "GB-LAS-EAY"
       },
       "suppliers": [
         {
-          "name": "Supplier 2",
-          "id": "GB-COH-00000001-supplier_58"
+          "name": "Seaway Envelopes and Stationery",
+          "id": "GB-COH-33333333"
         }
       ],
       "status": "active",
