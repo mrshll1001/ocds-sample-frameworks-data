@@ -197,9 +197,6 @@ An item is added to the contracts array with the details of the call-off, includ
 For each subsequent call-off a new item is added to the contracts array
 and a release is published.
 
-### Running a mini-competition (`relatedProcess`)
-TODO
-
 Framework agreement across multiple publishers
 ----------------------------------------------
 
@@ -227,28 +224,7 @@ The first stages of the framework agreement are very similar to that when it onl
 > The tender release has the following metadata.
 
 ```json
-{
-  "ocid": "ocds-b5fd17-second_example_framework",
-  "id": "ocds-b5fd17-second_example_framework-tender-2019-03-01T00:00:00Z",
-  "date": "2019-03-01T00:00:00Z",
-  "tag": [
-    "tender"
-  ],
-  "initiationType": "tender",
-  "parties": [
-    {
-      "name": "Crown Commercial Services",
-      "id": "GB-GOR-EA1015",
-      "identifer": {
-        "scheme": "GB-GOR",
-        "id": "EA1015"
-      },
-      "roles": [
-        "procuringEntity"
-      ]
-    }
-  ]
-}
+multi_publisher/001
 ```
 
 They are the procuring entity of the framework so they are referenced under `tender/procuringEntity`:
@@ -257,22 +233,7 @@ They are the procuring entity of the framework so they are referenced under `ten
 > The tender release has the following information in the `tender` block
 
 ```json
-{
-  "tender": {
-    "id": "ocds-b5fd17-second_example_framework-tender",
-    "title": "An Example National Framework",
-    "description": "An Example National Framework",
-    "status": "active",
-    "procuringEntity": {
-      "name": "Crown Commercial Services",
-      "id": "GB-LAS-GLG"
-    },
-    "value": {
-      "amount": "1000000",
-      "currency": "GBP"
-    }
-  }
-}
+multi_publisher/001
 ```
 
 Next the Suppliers are awarded a place on the framework agreement. Supplier 1, Supplier 2, and Supplier 3 have made it into the framework. The tenderers are included as part of the award release:
@@ -281,39 +242,7 @@ Next the Suppliers are awarded a place on the framework agreement. Supplier 1, S
 > The awards release has the following information in `awards`.
 
 ```json
-{
-  "awards": [
-    {
-      "id": "ocds-b5fd17-second_example_framework-award",
-      "title": "Award of suppliers on the example framework",
-      "description": "Suppliers 1, 2, and 3 have been awarded a place on the framework",
-      "status": "active",
-      "date": "2019-04-01T00:00:00Z",
-      "value": {
-        "amount": 1000000,
-        "currency": "GBP"
-      },
-      "suppliers": [
-        {
-          "name": "Supplier 1",
-          "id": "GB-COH-00000001-supplier_57"
-        },
-        {
-          "name": "Supplier 2",
-          "id": "GB-COH-00000002-supplier_58"
-        },
-        {
-          "name": "Supplier 3",
-          "id": "GB-COH-00000001-supplier_59"
-        }
-      ],
-      "contractPeriod": {
-        "startDate": "2019-04-01",
-        "endDate": "2020-03-31"
-      }
-    }
-  ]
-}
+multi_publisher/001 (awards)
 ```
 
 > Remember to update the entries under `release/parties` as well!
@@ -391,16 +320,12 @@ Remember to include the `buyer` and `suppliers` in this section, added by the ex
 
 Running a mini-competition using `relatedProcess`
 -------------------------------------------------
-+ Running a mini-competition involves setting up a new contracting process and referring back to the original process
-+ Therefore the method of modelling a mini-competition is the same regardless of how many publishers or buyers are involved.
+Mini-competitions involve a further competitive stage and therefore are represented in OCDS using a separate contracting process which is linked to the related process that established the framework.
 
-+ Example data
-
-Call-offs from a framework agreement can also be made via a mini-competition, where more than one supplier on the framework is invited to submit a bid to provide specific goods, works or services to a buyer.
-
-Mini-competitions are represented in OCDS using a separate contracting process, linked to the establishment of the framework, because they involve a further competitive stage.
-
-This is achieved through the following steps: + A *new contracting process* with a *new OCID* is created to represent the Mini Competition + In the new process the `relatedProcesses` array contains an entry referencing the OCID of the existing framework agreement + In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender.
+This is achieved through the following steps:
+1. A *new contracting process* with a *new OCID* is created to represent the Mini-competition.
+2. In the new process the `relatedProcesses` array contains an entry referencing the OCID of the existing framework agreement.
+3. In the `tender` block of the new process, the `procurementMethod` is set to `limited` or `selective` to represent the fact that this was not an open tender.
 
 > Note: This is a new contracting process where the buyer is known and the suppliers will be determined by the award block. Therefore the schema changes made by [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) and [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) that apply to the Contract block are not necessary to model mini-competitions.
 
@@ -410,44 +335,7 @@ Following the previous example of the Glasgow City framework agreement; after ma
 > A release for a new contracting process is begun with the following details.
 
 ```json
-{
-  "ocid": "ocds-r6ebe6-example_framework-competition-01",
-  "id": "ocds-r6ebe6-example_framework-competition-01-tender-2019-05-01T00:00:00Z",
-  "date": "2019-05-01T00:00:00Z",
-  "tag": [
-    "tender"
-  ],
-  "initiationType": "tender",
-  "buyer": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  },
-  "parties": [
-    {
-      "name": "Glasgow City",
-      "id": "GB-LAS-GLG",
-      "identifer": {
-        "scheme": "GB-LAS",
-        "id": "GLG"
-      },
-      "roles": [
-        "buyer",
-        "procuringEntity"
-      ]
-    }
-  ],
-  "relatedProcesses": [
-    {
-      "id": "ocds-r6ebe6-example_framework-parent",
-      "relationship": "framework",
-      "title": "An Example Framework",
-      "scheme": "ocid",
-      "identifer": "ocds-r6ebe6-example_framework",
-      "uri": "https://example.org/records/ocds-r6ebe6-example_framework"
-    }
-  ],
-
-}
+example_minicompetition
 ```
 
 Since this is a `tender` release the `tender` block contains information about the tender opportunity. The `procurementMethod` is set to `selective` to indicate that this is not an open tender.
@@ -455,22 +343,7 @@ Since this is a `tender` release the `tender` block contains information about t
 > The new contracting process' tender block contains the following information.
 
 ```json
-"tender": {
-  "id": "ocds-r6ebe6-example_framework-tender",
-  "title": "An Example Mini Competition",
-  "description": "A mini competition run off of the original framework",
-  "status": "active",
-  "procurementMethod": "selective",
-  "procuringEntity": {
-    "name": "Glasgow City",
-    "id": "GB-LAS-GLG"
-  },
-  "value": {
-    "amount": "2000",
-    "currency": "GBP"
-  }
-
-}
+example_minicompetition
 ```
 
 From this point the contracting process continues as normal, with the award and contract stages being released under the new OCID created for the mini-competition.
