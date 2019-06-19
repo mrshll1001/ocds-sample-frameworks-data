@@ -22,13 +22,7 @@ Framework agreements may represent many-to-many relationships between a variety 
 These should be declared appropriately in the package metadata:
 
 ```json
-{
-  "extensions": [
-    "https://github.com/open-contracting/ocds_multiple_buyers_extension",
-    "https://github.com/open-contracting-extensions/ocds_contract_suppliers_extension"
-  ],
-  "releases": []
-}
+extensions_block.json
 ```
 
 Framework agreement for a single publisher with multiple buyers
