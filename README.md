@@ -6,9 +6,8 @@ agreement](http://standard.open-contracting.org/latest/en/implementation/related
 
 This example will address the following scenarios:
 
-1. A framework agreement established for a single buyer published by a single publisher.
-2. A framework agreement established for multiple buyers, published by a single publisher.
-3. A framework agreement where the OCDS data is published by multiple publishers. This may occur when one publisher establishes a framework agreement, and then other publishers release OCDS data representing the call-offs from this.
+1. A framework agreement established for multiple buyers, published by a single publisher.
+2. A framework agreement where the OCDS data is published by multiple publishers. This may occur when one publisher establishes a framework agreement, and then other publishers release OCDS data representing the call-offs from this.
 
 Types of Call-offs from Frameworks
 ----------------------------------
@@ -107,95 +106,6 @@ sample 003_first_call-off (contract block)
 
 For each subsequent call-off this process is repeated with a new release published to add the relevant buyer information to the `parties` array and populate a new item in the `contracts` array. A second example for a call-off can be found [here](/example_data/single_publisher/multi_buyer/004_second_call-off.json) wherein Glasgow City make a call-off from the same framework established in this scenario.
 
-Framework agreement for a single publisher with a single buyer
---------------------------------------------------------------
-It is also possible for a buyer to establish a framework for its own use. An example of this may be where a local government establishes a framework containing local suppliers. From the OCDS perspective this looks similar, but not identical, to the previous scenario with multiple buyers. Notably there is only one buyer; so the [Multiple Buyers - Contract Level Extension](https://extensions.open-contracting.org/en/extensions/contract_buyer/master/) is not required. The [Contract Suppliers Extension](https://extensions.open-contracting.org/en/extensions/contract_suppliers/master/) is still used because the direct call-offs from the framework will likely span several buyers.
-
-
-The following examples represent the creation of a framework by Glasgow City for its own use. Glasgow will therefore be acting as the buyer and procuring entity.In these examples the publisher responsible is *Scottish Government* using their registered prefix of `ocds-r6ebe6`.
-
-### Starting the process - publishing the tender
-The same process is followed as before. The framework is put out to tender with a tender release in OCDS the same as any normal contracting process.
-
-There is one key difference from the previous scenario in this step -- because the only party calling off from the framework will be Glasgow City they are referenced in the `release/buyer`
-
-> **Tender Release**
-> The tender release looks similar to the previous scenario, with the key difference of a `release/buyer` field.
-```
-001_framework_tender.json
-```
-
-The `tender` block is populated normally, with information about the framework tender. For frameworks, `tender/value` should represent the total estimated upper value of the framework. Glasgow City is the procuring entity so they are referenced in `procuringEntity`.
-
-> **Tender Block**
-> The tender release has a populated `tender` block with the following information
-
-```
-001_framework_tender.json
-```
-### Establishing the framework agreement - awarding suppliers a position on the framework
-
-When a supplier is awarded a place on the framework, a release is made for the `award` award stage like a normal contracting process. The successful suppliers will be updated with the role of `supplier`. In this example Gamma Corp, Valkyrie Navigations, and Seaway Intelligence have been awarded a position onto the framework.
-
-> **Releasing an Award**
-> An award release is made adding the parties to the parties array
-
-```
-002_framework_award
-```
-
-Same as before, the `awards` entry must also be published with the relevant information about the award, and references to the Suppliers are made in the `suppliers` array. Remember to use a single award notice listing all suppliers. The `value` field should represent the total possible value of the framework.
-
-> **Award block**
-> The award block is included in the release. It includes OrganizationReferences to the suppliers in the `suppliers` array and details of the award.
-
-```
-002_framework_award
-```
-
-The framework is now established, and call-offs may now be made.
-
-### Making direct call-offs (Contract)
-Following the establishment of the framework agreement, Glasgow now make a direct call-off to Supplier 1. A release is made with the appropriate release metadata:
-> **Release metadata**
-> The release for the direct call-off has the following metadata.
-
-```json
-{
-  "ocid": "ocds-r6ebe6-example_framework",
-  "id": "ocds-r6ebe6-example_framework-contract-2019-03-01T00:00:00Z",
-  "date": "2019-03-01T00:00:00Z",
-  "tag": [
-    "contract"
-  ]
-}
-```
-
-An item is added to the contracts array with the details of the call-off, including the supplier and buyer information:
-> **Contracts Block**
-> The release for the direct call-off has the following information in the contracts block. This framework only has a single buyer, so the `buyer` information does not need to be provided under `contracts/buyer`. Here, the Contracts Suppliers extension provides the `contracts/suppliers` array.
-
-```json
-{
-  "contracts": [
-    {
-      "id": "ocds-r6ebe6-example_framework-contract-01",
-      "awardID": "ocds-r6ebe6-example_framework-award-01",
-      "title": "The First direct call-Off",
-      "description": "A direct call off to buy things from Supplier 1 ",
-      "suppliers": [
-        {
-          "name": "Supplier 1",
-          "id": "GB-COH-00000001-supplier_57"
-        }
-      ]
-    }
-  ]
-}
-```
-
-For each subsequent call-off a new item is added to the contracts array
-and a release is published.
 
 Framework agreement across multiple publishers
 ----------------------------------------------
